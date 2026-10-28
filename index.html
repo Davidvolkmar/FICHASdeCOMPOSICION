@@ -1,0 +1,1086 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ficha de Composición · Vivienda</title>
+<meta name="description" content="Presentación interactiva: diseña tu casa de afuera hacia adentro con 7 decisiones y 12 principios de composición.">
+<meta property="og:title" content="Ficha de Composición · Diseña tu casa de afuera hacia adentro">
+<meta property="og:description" content="Presentación interactiva: 7 decisiones, 12 principios, reto y tu ficha.">
+<meta name="theme-color" content="#E4572E">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --a:#E4572E;--a2:#F28B67;--tint:#FCEAE3;--ink:#161616;--ink2:#3b3b3b;--g1:#F2F2EF;--g2:#DADAD5;--g3:#85857F;--dark:#121212;
+  --fd:'Barlow Condensed','Bahnschrift','Arial Narrow',sans-serif;--fb:'Barlow','Bahnschrift',Arial,sans-serif;
+  --top:60px;--bot:76px;--gut:clamp(16px,3.2vw,56px);--r:clamp(14px,1.6vmin,22px);
+  --h1:clamp(44px,9vmin,140px);--h2:clamp(36px,7vmin,104px);--lead:clamp(16px,2.3vmin,26px);--body:clamp(15px,1.9vmin,21px);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;background:#fff;color:var(--ink);font-family:var(--fb);font-size:var(--body);line-height:1.45;-webkit-text-size-adjust:100%}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:inherit}
+svg{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--fd);text-transform:uppercase;line-height:.92;margin:0;letter-spacing:-.01em}
+h2{font-size:var(--h2);font-weight:800}
+h2 em,h1 em{font-style:normal;color:var(--a)}
+.kicker{font-family:var(--fd);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:clamp(13px,1.6vmin,18px);color:var(--a)}
+.lead{font-size:var(--lead);color:var(--ink2);margin:0;max-width:34em}
+
+/* ---------- barras ---------- */
+.top{position:fixed;left:0;right:0;top:0;height:var(--top);z-index:30;display:flex;align-items:center;gap:10px;padding:0 var(--gut);padding-top:env(safe-area-inset-top);background:rgba(255,255,255,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--g2)}
+.brand{font-family:var(--fd);font-weight:800;font-size:20px;white-space:nowrap}
+.brand b{color:var(--a)}
+.stitle{font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--g3);font-size:15px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1}
+.ib{width:44px;height:44px;border-radius:50%;border:2px solid var(--ink);background:#fff;display:grid;place-items:center;flex:none;font-size:18px;line-height:1}
+.pill{height:44px;border-radius:99px;border:none;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:0 6px 0 14px;display:flex;align-items:center;gap:8px;white-space:nowrap;flex:none}
+.pill .dots{display:flex;gap:3px}
+.pill .dots i{width:7px;height:7px;border-radius:50%;background:#555}
+.pill .dots i.on{background:var(--a)}
+.pill .n{background:var(--a);border-radius:99px;padding:6px 10px}
+.bot{position:fixed;left:0;right:0;bottom:0;height:calc(var(--bot) + env(safe-area-inset-bottom));padding:0 var(--gut) env(safe-area-inset-bottom);z-index:30;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--g2)}
+.nav-b{width:56px;height:56px;border-radius:50%;border:2px solid var(--ink);background:#fff;font-size:26px;display:grid;place-items:center;flex:none;transition:transform .15s}
+.nav-b:active{transform:scale(.92)}
+.nav-b.next{background:var(--a);border-color:var(--a);color:#fff}
+.nav-b:disabled{opacity:.25}
+.prog{flex:1;display:flex;gap:4px;align-items:center;height:56px;min-width:0}
+.prog button{flex:1;height:28px;border:none;background:none;padding:0;display:flex;align-items:center}
+.prog button i{display:block;width:100%;height:6px;border-radius:3px;background:var(--g2);transition:background .3s,height .3s}
+.prog button.done i{background:var(--a2)}
+.prog button.on i{background:var(--a);height:10px}
+.count{font-family:var(--fd);font-weight:800;font-size:20px;min-width:62px;text-align:center}
+body.dk .top,body.dk .bot{background:rgba(18,18,18,.9);border-color:#2a2a2a;color:#fff}
+body.dk .stitle{color:#9a9a93}
+body.dk .ib,body.dk .nav-b:not(.next){background:#1e1e1e;border-color:#555;color:#fff}
+body.dk .prog button i{background:#3a3a3a}
+body.dk .prog button.done i{background:#8a4a35}
+body.dk .prog button.on i{background:var(--a)}
+@media(max-width:640px){.stitle,.brand{display:none}.top{justify-content:flex-end}.count{display:none}}
+.hint{position:fixed;bottom:calc(var(--bot) + 14px);left:50%;transform:translateX(-50%);z-index:29;background:var(--ink);color:#fff;border-radius:99px;padding:8px 16px;font-weight:600;font-size:14px;pointer-events:none;transition:opacity .6s;white-space:nowrap}
+.hint.off{opacity:0}
+
+/* ---------- diapositivas ---------- */
+.deck{position:fixed;inset:0;touch-action:pan-y}
+.slide{position:absolute;inset:0;padding:calc(var(--top) + clamp(16px,3vmin,40px)) var(--gut) calc(var(--bot) + clamp(16px,3vmin,40px));overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;display:flex;flex-direction:column;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s .55s;background:#fff}
+.slide.past{transform:translateX(-60px)}
+.slide.active{opacity:1;visibility:visible;transform:none;transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1),visibility 0s}
+.slide>.in{margin:auto 0;width:100%;max-width:1500px;align-self:center}
+.slide.dark{background:var(--dark);color:#fff}
+.slide.dark .lead{color:#bdbdb6}
+.slide.soft{background:var(--g1)}
+.slide.acc{background:var(--a);color:#fff}
+.stag>*{opacity:0;transform:translateY(22px)}
+.active .stag>*{animation:rise .6s cubic-bezier(.2,.8,.2,1) forwards}
+.active .stag>*:nth-child(2){animation-delay:.08s}.active .stag>*:nth-child(3){animation-delay:.16s}.active .stag>*:nth-child(4){animation-delay:.24s}.active .stag>*:nth-child(5){animation-delay:.32s}.active .stag>*:nth-child(6){animation-delay:.4s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border:2px solid var(--ink);background:#fff;color:var(--ink);padding:10px 22px;border-radius:99px;font-weight:700;text-decoration:none;font-size:clamp(15px,1.8vmin,19px);transition:transform .15s}
+.btn:active{transform:scale(.96)}
+.btn.pri{background:var(--a);border-color:var(--a);color:#fff}
+.btn.dk{background:var(--ink);color:#fff}
+.dark .btn:not(.pri){background:#1f1f1f;color:#fff;border-color:#4a4a4a}
+
+/* portada */
+.hero{display:grid;gap:clamp(16px,3vmin,40px);align-items:center}
+@media(min-aspect-ratio:1/1){.hero{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}}
+.stickers{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:clamp(12px,2vmin,24px)}
+.sticker{font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:clamp(12px,1.6vmin,17px);padding:6px 14px;border-radius:99px;border:1.5px solid var(--ink);background:#fff}
+.sticker.hot{background:var(--a);border-color:var(--a);color:#fff;transform:rotate(-3deg)}
+.hero h1{font-size:var(--h1);font-weight:800}
+.hero h1 .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.hero .lead{margin:clamp(12px,2.4vmin,28px) 0}
+.hero-vis{position:relative;width:100%;aspect-ratio:5/4;max-height:62vh;margin:0 auto}
+.hero-vis svg{width:100%;height:100%}
+.badge{position:absolute;right:4%;top:4%;background:var(--ink);color:#fff;font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(12px,1.6vmin,17px);letter-spacing:.06em;padding:10px 14px;border-radius:14px;transform:rotate(4deg);line-height:1.1}
+.badge b{display:block;font-size:clamp(22px,3.4vmin,40px);color:var(--a2)}
+
+/* actividad */
+.head{display:grid;gap:clamp(8px,1.4vmin,16px);margin-bottom:clamp(16px,3vmin,36px)}
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.4vmin,16px);margin-bottom:clamp(12px,2vmin,24px)}
+.nums div{background:var(--g1);border-radius:var(--r);padding:clamp(12px,2.2vmin,26px)}
+.nums b{display:block;font-family:var(--fd);font-weight:800;font-size:clamp(48px,11vmin,150px);line-height:.85;color:var(--a)}
+.nums span{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(14px,2.2vmin,26px);line-height:1}
+.steps{display:grid;gap:clamp(8px,1.4vmin,16px)}
+@media(min-width:720px){.steps{grid-template-columns:repeat(3,1fr)}}
+.step{border:2px solid var(--ink);border-radius:var(--r);padding:clamp(14px,2vmin,24px);display:grid;grid-template-columns:auto 1fr;gap:6px 14px;align-items:center;background:#fff}
+.step .n{width:clamp(38px,5vmin,56px);height:clamp(38px,5vmin,56px);border-radius:50%;background:var(--a);color:#fff;display:grid;place-items:center;font-family:var(--fd);font-weight:800;font-size:clamp(20px,3vmin,30px)}
+.step h3{font-size:clamp(26px,4vmin,44px);font-weight:800}
+.step p{grid-column:1/-1;margin:0;color:var(--ink2)}
+.step svg{grid-column:1/-1;width:100%;height:clamp(60px,10vmin,120px)}
+.deliver{margin-top:clamp(10px,2vmin,22px);display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.deliver b{font-family:var(--fd);text-transform:uppercase;font-size:clamp(18px,2.6vmin,28px);margin-right:6px}
+.deliver span{background:var(--tint);border-radius:99px;padding:6px 14px;font-weight:600;font-size:clamp(13px,1.7vmin,18px)}
+.deliver span::before{content:"✓ ";color:var(--a);font-weight:800}
+
+/* ruta */
+.route{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vmin,16px)}
+@media(min-width:720px){.route{grid-template-columns:repeat(4,1fr)}}
+@media(min-width:1100px) and (min-aspect-ratio:4/3){.route{grid-template-columns:repeat(7,1fr)}}
+.rt{border:1.5px solid #3a3a3a;background:#1d1d1d;border-radius:var(--r);padding:clamp(10px,1.6vmin,18px);text-align:left;display:grid;gap:8px;position:relative;transition:transform .2s,border-color .2s}
+.rt:hover,.rt:active{transform:translateY(-4px);border-color:var(--a)}
+.rt .num{font-family:var(--fd);font-weight:800;font-size:clamp(30px,5vmin,60px);line-height:.85;color:var(--a)}
+.rt .nm{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(18px,2.6vmin,28px);line-height:1}
+.rt .ic{background:#fff;border-radius:10px;padding:8px;aspect-ratio:88/50}
+.rt .ic svg{width:100%;height:100%}
+.rt .ok{position:absolute;top:10px;right:10px;width:26px;height:26px;border-radius:50%;background:var(--a);color:#fff;display:none;place-items:center;font-weight:800;font-size:14px}
+.rt.sel .ok{display:grid}
+.depth{margin-top:clamp(14px,2.4vmin,28px);height:12px;border-radius:6px;background:linear-gradient(90deg,#3a2a24,var(--a));position:relative}
+.depth-l{display:flex;justify-content:space-between;margin-top:8px;font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#bdbdb6;font-size:clamp(13px,1.6vmin,17px)}
+
+/* nivel */
+.lv{display:grid;gap:clamp(14px,2.4vmin,32px);align-items:stretch}
+@media(min-aspect-ratio:1/1){.lv{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr)}}
+.stage{background:var(--dark);border-radius:calc(var(--r) + 6px);color:#fff;padding:clamp(14px,2.2vmin,28px);display:flex;flex-direction:column;min-height:0;position:relative;overflow:hidden}
+.stage .bn{display:flex;align-items:baseline;gap:12px}
+.stage .bn b{font-family:var(--fd);font-weight:800;font-size:clamp(54px,10vmin,140px);line-height:.8;color:var(--a)}
+.stage .bn span{font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.1em;font-size:clamp(13px,1.6vmin,18px);color:#9a9a93}
+.stage svg{width:100%;flex:1;min-height:clamp(180px,34vmin,520px)}
+.stage p{margin:0;color:#d4d4cd}
+.stage .q{color:var(--a2);font-weight:600;margin-top:8px}
+.stage .dots{position:absolute;top:clamp(14px,2.2vmin,28px);right:clamp(14px,2.2vmin,28px);display:flex;gap:5px}
+.stage .dots i{width:18px;height:5px;border-radius:3px;background:#3a3a3a}
+.stage .dots i.on{background:var(--a)}
+.lvr{display:flex;flex-direction:column;gap:clamp(10px,1.8vmin,20px);justify-content:center}
+.lvr h2 small{display:block;font-family:var(--fb);text-transform:none;font-weight:500;font-size:var(--lead);color:var(--g3);letter-spacing:0;margin-top:8px;line-height:1.3}
+.chosen{align-self:flex-start;font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(13px,1.6vmin,17px);letter-spacing:.06em;padding:6px 14px;border-radius:99px;background:var(--g1);color:var(--g3)}
+.chosen.ok{background:var(--a);color:#fff}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.4vmin,16px)}
+.opt{position:relative;border:2px solid var(--ink);border-radius:var(--r);background:#fff;padding:clamp(8px,1.4vmin,14px);text-align:left;display:grid;gap:8px;transition:transform .2s,box-shadow .2s,background .2s}
+.opt:active{transform:scale(.97)}
+.opt .ico{background:var(--g1);border-radius:10px;padding:clamp(6px,1vmin,12px);aspect-ratio:88/48}
+.opt .ico svg{width:100%;height:100%}
+.opt .lbl{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(18px,2.8vmin,32px);line-height:1;padding-right:44px}
+.opt .pick{position:absolute;right:clamp(8px,1.2vmin,12px);bottom:clamp(8px,1.2vmin,12px);width:42px;height:42px;border-radius:50%;border:2px solid var(--ink);background:#fff;display:grid;place-items:center;font-weight:800;font-size:18px}
+.opt.sel{background:var(--tint);border-color:var(--a);box-shadow:0 6px 0 var(--a)}
+.opt.sel .pick{background:var(--a);border-color:var(--a);color:#fff}
+.opt.otro{border-style:dashed;border-color:var(--a)}
+.opt.otro .ico{background:var(--tint);display:grid;place-items:center;color:var(--a);font-family:var(--fd);font-weight:800;font-size:clamp(34px,6vmin,64px)}
+.opt.otro .lbl{color:var(--a)}
+.opt .sub{font-size:13px;color:var(--g3);font-weight:600;margin-top:-4px;padding-right:44px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tip{font-size:clamp(13px,1.6vmin,16px);color:var(--g3);font-weight:600}
+
+/* principios */
+.pgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.2vmin,14px)}
+@media(min-width:620px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px) and (min-aspect-ratio:4/3){.pgrid{grid-template-columns:repeat(4,1fr)}}
+.pc{border:2px solid var(--ink);border-radius:var(--r);background:#fff;padding:clamp(6px,1vmin,10px);text-align:left;display:grid;gap:6px;transition:transform .2s}
+.pc:active{transform:scale(.97)}
+.pc .dg{background:var(--g1);border-radius:10px;aspect-ratio:168/64;padding:4px}
+.pc .dg svg{width:100%;height:100%}
+.pc .t{display:flex;gap:8px;align-items:baseline;padding:0 4px 2px}
+.pc .t b{font-family:var(--fd);color:var(--a);font-weight:800;font-size:clamp(15px,2vmin,22px)}
+.pc .t span{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(17px,2.4vmin,28px);line-height:1}
+.pc.on{border-color:var(--a);background:var(--tint)}
+
+/* ejemplo */
+.ex{display:grid;gap:clamp(14px,2.4vmin,32px);align-items:center}
+@media(min-aspect-ratio:1/1){.ex{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+.formula{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:clamp(12px,2vmin,24px) 0}
+.formula span{border:2px solid var(--ink);border-radius:99px;padding:8px 18px;font-weight:700;font-size:clamp(15px,2.1vmin,24px);background:#fff}
+.formula i{font-style:normal;font-family:var(--fd);font-weight:800;color:var(--a);font-size:clamp(24px,3.4vmin,40px)}
+.formula b{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(28px,4.4vmin,56px);color:var(--a)}
+.ex svg{width:100%;aspect-ratio:5/4;max-height:60vh}
+
+/* reto */
+.qwrap{display:grid;gap:clamp(14px,2.4vmin,32px);align-items:center}
+@media(min-aspect-ratio:1/1){.qwrap{grid-template-columns:minmax(0,.8fr) minmax(0,1fr)}}
+.qbox{width:100%;max-width:520px;justify-self:center;background:linear-gradient(160deg,#262626,#151515);border:1px solid #333;border-radius:26px;padding:clamp(14px,2vmin,22px);min-height:min(560px,64vh);display:flex;flex-direction:column}
+.qbars{display:flex;gap:4px;margin-bottom:14px}
+.qbars i{flex:1;height:4px;border-radius:2px;background:#3a3a3a;position:relative;overflow:hidden}
+.qbars i.done{background:var(--a)}
+.qbars i.cur::after{content:"";position:absolute;inset:0;background:var(--a2);animation:fillbar 1s ease forwards;transform-origin:left}
+@keyframes fillbar{from{transform:scaleX(0)}}
+.qtag{font-family:var(--fd);text-transform:uppercase;font-weight:700;letter-spacing:.1em;color:var(--a2);font-size:14px}
+.qq{font-family:var(--fd);font-weight:800;font-size:clamp(26px,4vmin,40px);line-height:1;margin:8px 0 12px;text-transform:uppercase}
+.qdg{background:#fff;border-radius:16px;padding:10px;margin-bottom:12px;aspect-ratio:168/72}
+.qdg svg{width:100%;height:100%}
+.qopts{display:grid;gap:8px;margin-top:auto}
+.qopt{border:1.5px solid #4a4a4a;background:#1f1f1f;border-radius:14px;padding:14px 16px;text-align:left;font-weight:600;font-size:clamp(16px,2vmin,20px);min-height:52px}
+.qopt.right{background:#1f3b2a;border-color:#4cc27a}
+.qopt.wrong{background:#3b1f1f;border-color:#e45a5a}
+.qfb{min-height:40px;margin-top:10px;color:#d4d4cd;font-size:15px}
+.qend{text-align:center;margin:auto 0;display:grid;gap:14px;justify-items:center}
+.qend .score{font-family:var(--fd);font-weight:800;font-size:clamp(90px,16vmin,160px);line-height:.85;color:var(--a)}
+
+/* mi ficha */
+.mf{display:grid;gap:clamp(12px,2vmin,24px)}
+@media(min-width:900px){.mf{grid-template-columns:1.1fr .9fr;align-items:start}}
+.card{border:2px solid var(--ink);border-radius:var(--r);padding:clamp(12px,2vmin,22px);background:#fff}
+.mf-rows{display:grid;gap:6px}
+.mf-row{display:grid;grid-template-columns:34px 1fr 84px;gap:10px;align-items:center;padding:6px 8px;border-radius:12px;background:var(--g1);border:none;text-align:left;width:100%}
+.mf-row .n{font-family:var(--fd);font-weight:800;color:var(--a);font-size:22px}
+.mf-row .lv2{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:12px;color:var(--g3);letter-spacing:.06em;display:block}
+.mf-row .ch{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(17px,2.2vmin,22px);line-height:1}
+.mf-row .ch.empty{color:#b5b5ae}
+.mf-row .mini{background:#fff;border-radius:8px;height:46px;padding:3px;display:grid;place-items:center}
+.mf-row .mini svg{width:100%;height:100%}
+.mf-row.ok{background:var(--tint)}
+.progress{height:10px;border-radius:5px;background:var(--g1);overflow:hidden;margin:6px 0 12px}
+.progress i{display:block;height:100%;background:var(--a);width:0;transition:width .5s}
+.field{display:grid;gap:6px;margin-bottom:12px}
+.field label{font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.08em;font-size:13px}
+.field input,.field textarea{font:inherit;font-size:16px;border:2px solid var(--ink);border-radius:12px;padding:10px 12px;width:100%;background:#fff;color:var(--ink)}
+.field textarea{min-height:96px;resize:vertical}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1.5px solid var(--ink);background:#fff;border-radius:99px;padding:7px 12px;font-weight:600;font-size:14px;min-height:38px}
+.chip.on{background:var(--ink);color:#fff}
+
+/* cierre */
+.end{text-align:center;display:grid;gap:clamp(14px,2.6vmin,30px);justify-items:center}
+.end h2{font-size:clamp(40px,8vmin,120px)}
+.end .btn{background:#fff;color:var(--ink);border-color:#fff}
+.end .btn.dk{background:var(--ink);border-color:var(--ink);color:#fff}
+
+/* índice */
+.ov{position:fixed;inset:0;z-index:70;background:rgba(18,18,18,.97);color:#fff;display:none;overflow:auto;padding:calc(var(--top) + 10px) var(--gut) 30px}
+.ov.open{display:block;animation:fade .25s}
+.ov h3{font-size:clamp(30px,5vmin,56px);font-weight:800;margin-bottom:16px}
+.ov-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.ov-grid button{border:1.5px solid #3a3a3a;background:#1d1d1d;border-radius:14px;padding:14px;text-align:left;display:flex;gap:12px;align-items:center;min-height:64px}
+.ov-grid button b{font-family:var(--fd);font-weight:800;color:var(--a);font-size:26px;min-width:34px}
+.ov-grid button span{font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:20px;line-height:1}
+.ov-grid button.on{border-color:var(--a);background:#2a1d18}
+.ov .x{position:fixed;top:calc(var(--top) + 10px);right:var(--gut)}
+
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;display:none}
+.modal.open{display:block}
+.modal .bg{position:absolute;inset:0;background:rgba(10,10,10,.6);animation:fade .25s}
+.sheet{position:absolute;left:0;right:0;bottom:0;max-height:92vh;overflow:auto;background:#fff;border-radius:24px 24px 0 0;padding:18px var(--gut) calc(24px + env(safe-area-inset-bottom));animation:up .35s cubic-bezier(.2,.8,.2,1)}
+@media(min-width:760px){.sheet{left:50%;top:50%;bottom:auto;right:auto;width:min(1100px,92vw);max-height:88vh;transform:translate(-50%,-50%);border-radius:26px;padding:clamp(22px,3vmin,40px);animation:pop .35s cubic-bezier(.2,.8,.2,1)}}
+@keyframes up{from{transform:translateY(100%)}}
+@keyframes pop{from{transform:translate(-50%,-46%) scale(.96);opacity:0}}
+@keyframes fade{from{opacity:0}}
+.grab{width:44px;height:5px;border-radius:3px;background:var(--g2);margin:0 auto 12px}
+@media(min-width:760px){.grab{display:none}}
+.x{position:absolute;top:14px;right:14px;width:48px;height:48px;border-radius:50%;border:2px solid var(--ink);background:#fff;font-size:22px;line-height:1;z-index:2}
+.m-grid{display:grid;gap:18px}
+@media(min-width:760px){.m-grid{grid-template-columns:1.1fr 1fr;align-items:center}}
+.m-vis{background:var(--g1);border-radius:18px;padding:18px;aspect-ratio:4/3;display:grid;place-items:center}
+.m-vis svg{width:100%;height:100%}
+.m-txt h3{font-size:clamp(40px,7vmin,76px);font-weight:800;margin:4px 0 10px}
+.m-txt p{margin:0 0 12px;color:var(--ink2)}
+.m-box{background:var(--g1);border-radius:14px;padding:12px 14px;margin-bottom:10px}
+.m-box b{font-family:var(--fd);text-transform:uppercase;letter-spacing:.06em;font-size:13px;display:block;color:var(--g3)}
+.m-box.q{background:var(--tint)}
+.m-box.q b{color:var(--a)}
+.m-box.q span{font-weight:600}
+.m-ref{font-size:14px;color:var(--g3);font-style:italic;margin-bottom:10px}
+.m-nav{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+.toast{position:fixed;left:50%;bottom:calc(var(--bot) + 20px);transform:translate(-50%,20px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:99px;font-weight:600;opacity:0;pointer-events:none;transition:all .3s;z-index:95;font-size:14px;white-space:nowrap}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* animaciones SVG */
+.play .a-slide{animation:aslide 2.2s ease-in-out infinite}
+@keyframes aslide{0%,100%{transform:translateX(-6px)}50%{transform:translateX(4px)}}
+.play .a-flip{animation:aflip 3s ease-in-out infinite;transform-origin:80px 28px}
+@keyframes aflip{0%,15%{transform:scaleX(0)}45%,100%{transform:scaleX(1)}}
+.play .a-tilt{animation:atilt 3.2s ease-in-out infinite;transform-origin:80px 46px}
+@keyframes atilt{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(1deg)}70%{transform:rotate(0)}}
+.play .a-pulse{animation:apulse 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes apulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+.play .a-bar{animation:abar 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:50% 100%}
+@keyframes abar{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.7)}}
+.play .a-walk{animation:awalk 3s ease-in-out infinite alternate}
+@keyframes awalk{from{transform:translateX(-40px)}to{transform:translateX(0)}}
+.play .a-swapA{animation:aswapA 2.6s steps(1) infinite}
+.play .a-swapB{animation:aswapB 2.6s steps(1) infinite}
+@keyframes aswapA{0%{fill:#161616}50%{fill:#fff}}
+@keyframes aswapB{0%{fill:#fff}50%{fill:#161616}}
+.play .a-spin{animation:aspin 6s linear infinite;transform-box:fill-box;transform-origin:center}
+@keyframes aspin{to{transform:rotate(360deg)}}
+.play .a-float{animation:afloat 3s ease-in-out infinite}
+@keyframes afloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+
+/* ---------- v2: proyección y loops ---------- */
+.ib.play-on{background:var(--a);border-color:var(--a);color:#fff}
+.pdf{height:44px;display:flex;align-items:center;padding:0 16px;border-radius:99px;background:var(--a);color:#fff;font-weight:700;font-size:14px;text-decoration:none;white-space:nowrap;flex:none}
+body.dk .pdf{background:var(--a);color:#fff}
+.timer{position:fixed;left:0;top:var(--top);height:3px;background:var(--a);z-index:31;width:0}
+.timer.run{animation:timer linear forwards}
+@keyframes timer{from{width:0}to{width:100%}}
+.rutag{display:grid;gap:clamp(12px,2vmin,28px);align-items:center}
+@media(min-aspect-ratio:1/1){.rutag{grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr)}}
+.rutag svg{width:100%;aspect-ratio:5/4;max-height:58vh}
+.rlist{display:grid;gap:6px;grid-template-columns:1fr}
+@media(max-aspect-ratio:1/1){.rlist{grid-template-columns:1fr 1fr}}
+.rl{display:flex;align-items:center;gap:12px;border:1.5px solid #333;background:#1b1b1b;border-radius:14px;padding:6px 12px;text-align:left;transition:all .35s;min-height:48px}
+.rl b{font-family:var(--fd);font-weight:800;color:#6d6d66;font-size:clamp(22px,3.2vmin,36px);min-width:1.4em;transition:color .35s}
+.rl span{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(17px,2.6vmin,30px);line-height:1;flex:1}
+.rl i{font-style:normal;font-size:13px;color:#8a8a83}
+.rl.on{background:#2a1d18;border-color:var(--a);transform:translateX(8px)}
+.rl.on b{color:var(--a)}
+.rl.done b{color:var(--a2)}
+.oall{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(8px,1.2vmin,14px)}
+@media(min-width:620px){.oall{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1000px) and (min-aspect-ratio:4/3){.oall{grid-template-columns:repeat(6,1fr)}}
+.oc{border:2px solid var(--ink);border-radius:var(--r);background:#fff;padding:clamp(5px,.8vmin,8px);text-align:left;display:grid;gap:4px;transition:transform .2s}
+.oc:active{transform:scale(.97)}
+.oc svg{width:100%;aspect-ratio:200/120;background:var(--g1);border-radius:10px}
+.oc .t{display:flex;gap:8px;align-items:baseline;padding:0 4px 2px}
+.oc .t b{font-family:var(--fd);color:var(--a);font-weight:800;font-size:clamp(14px,1.9vmin,20px)}
+.oc .t span{font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(16px,2.3vmin,26px);line-height:1}
+.pr{display:grid;gap:clamp(14px,2.4vmin,36px);align-items:center}
+@media(min-aspect-ratio:1/1){.pr{grid-template-columns:minmax(0,1.25fr) minmax(0,1fr)}}
+.pr .big{background:var(--g1);border-radius:calc(var(--r) + 6px);padding:clamp(10px,2vmin,26px)}
+.pr .big svg{width:100%;aspect-ratio:200/120}
+.pr .num{font-family:var(--fd);font-weight:800;color:var(--a);font-size:clamp(50px,9vmin,130px);line-height:.8}
+.pr h2{margin:6px 0 10px}
+.pr p{margin:0 0 12px}
+.box{border-radius:14px;padding:clamp(10px,1.6vmin,18px);margin-bottom:10px;background:var(--g1)}
+.box b{font-family:var(--fd);text-transform:uppercase;letter-spacing:.08em;font-size:clamp(12px,1.5vmin,16px);display:block;color:var(--g3);margin-bottom:2px}
+.box.u{background:var(--ink);color:#fff}
+.box.u b{color:var(--a2)}
+.box.q{background:var(--tint)}
+.box.q b{color:var(--a)}
+.box.q span{font-weight:600}
+.ref{font-style:italic;color:var(--g3);font-size:clamp(13px,1.6vmin,17px)}
+.opt .lbl{padding-right:0}
+.opt .ver{font-size:13px;color:var(--g3);font-weight:600}
+.otro-c{border:2px dashed var(--a);border-radius:var(--r);padding:clamp(10px,1.6vmin,16px);display:flex;gap:12px;align-items:center;color:var(--a);font-weight:700;background:var(--tint)}
+.otro-c b{font-family:var(--fd);font-size:clamp(30px,5vmin,50px);line-height:.8}
+.opts3{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(8px,1.4vmin,16px)}
+@media(max-width:520px){.opts3{grid-template-columns:1fr 1fr}.opts3 .opt:last-child{grid-column:1/-1}}
+/* volumetrías 3D */
+@media(min-aspect-ratio:1/1){.lv{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr)}}
+.opt .vol{position:relative;background:var(--g1);border-radius:10px;aspect-ratio:4/3;overflow:hidden}
+.opt .vol svg{width:100%;height:100%}
+.ico2{width:58%;margin:6px auto 0;background:#fff;border:1px solid var(--g2);border-radius:8px;padding:3px 4px}
+.ico2 svg{width:100%;aspect-ratio:92/46}
+.mv3{display:grid;gap:10px;width:100%}
+.mv3 .v3{width:100%;aspect-ratio:4/3;background:#fff;border-radius:12px}
+.mv3 .mv2{display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:8px 12px}
+.mv3 .mv2 svg{width:42%;aspect-ratio:92/46}
+.mv3 .mv2 span{font-family:var(--fd);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px;color:var(--g3)}
+.m-vis.three{aspect-ratio:auto;padding:12px}
+.sum{display:grid;gap:clamp(6px,1vmin,12px);grid-template-columns:repeat(7,minmax(0,1fr))}
+.scol{display:grid;gap:clamp(5px,.8vmin,10px);align-content:start}
+.scol h3{font-size:clamp(15px,2.2vmin,26px);font-weight:800;display:flex;gap:6px;align-items:baseline;line-height:1}
+.scol h3 b{color:var(--a)}
+.scell{border:1.5px solid var(--ink);border-radius:12px;background:#fff;padding:0;text-align:left;overflow:hidden}
+.scell svg{width:100%;aspect-ratio:4/3;background:var(--g1)}
+.scell span{display:block;font-family:var(--fd);font-weight:800;text-transform:uppercase;font-size:clamp(12px,1.6vmin,18px);padding:4px 8px;line-height:1.05}
+@media(max-aspect-ratio:1/1){.sum{grid-template-columns:1fr}.scol{grid-template-columns:72px repeat(3,minmax(0,1fr));align-items:center}.scol h3{flex-direction:column;font-size:13px;overflow-wrap:anywhere}}
+.it{display:grid;gap:clamp(14px,2.4vmin,32px);align-items:center}
+@media(min-aspect-ratio:1/1){.it{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr)}}
+.it svg{width:100%;aspect-ratio:4/3;max-height:62vh}
+.itsteps{display:flex;flex-wrap:wrap;gap:6px;margin:clamp(10px,2vmin,22px) 0}
+.itsteps span{border:1.5px solid var(--g2);border-radius:99px;padding:6px 12px;font-family:var(--fd);font-weight:700;text-transform:uppercase;font-size:clamp(13px,1.8vmin,19px);color:var(--g3);transition:all .3s}
+.itsteps span.done{border-color:var(--a2);color:var(--ink)}
+.itsteps span.on{background:var(--a);border-color:var(--a);color:#fff;transform:scale(1.08)}
+.itcount{font-family:var(--fd);font-weight:800;font-size:clamp(60px,12vmin,170px);line-height:.8;color:var(--a)}
+.itcount small{display:block;font-size:clamp(14px,2vmin,22px);letter-spacing:.1em;color:var(--g3)}
+/* animaciones urbanas */
+.play .u-draw{stroke-dasharray:100;animation:udraw 6s ease-in-out infinite}
+.play .u-draw2{stroke-dasharray:100;animation:udraw2 6s ease-in-out infinite}
+.play .u-draw3{stroke-dasharray:100;animation:udraw3 6s ease-in-out infinite}
+@keyframes udraw{0%{stroke-dashoffset:100}30%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@keyframes udraw2{0%,22%{stroke-dashoffset:100}48%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+@keyframes udraw3{0%,40%{stroke-dashoffset:100}66%,88%{stroke-dashoffset:0}100%{stroke-dashoffset:100}}
+.play .u-walk{animation:uwalk 6s ease-in-out infinite}
+@keyframes uwalk{0%{transform:translateX(0);opacity:0}6%{opacity:1}75%{transform:translateX(160px);opacity:1}88%,100%{transform:translateX(160px);opacity:0}}
+.play .u-walk2{animation:uwalk2 6s ease-in-out infinite}
+@keyframes uwalk2{0%,8%{transform:translateX(0)}70%,90%{transform:translateX(112px)}100%{transform:translateX(0);opacity:0}}
+.play .u-mirror{animation:umirror 6s ease-in-out infinite;transform-origin:100px 0}
+@keyframes umirror{0%,12%{transform:scaleX(0)}42%,88%{transform:scaleX(1)}100%{transform:scaleX(0)}}
+.play .u-beam{animation:ubeam 6s ease-in-out infinite;transform-origin:100px 114px}
+@keyframes ubeam{0%,8%{transform:rotate(0)}18%{transform:rotate(-7deg)}26%{transform:rotate(-5deg)}34%{transform:rotate(-2.5deg)}42%,92%{transform:rotate(0)}100%{transform:rotate(0)}}
+.play .u-grow{animation:ugrow 6s cubic-bezier(.3,1.3,.5,1) infinite;transform-box:fill-box;transform-origin:center}
+@keyframes ugrow{0%,10%{transform:scale(.3);opacity:0}30%{transform:scale(1.06);opacity:1}38%,90%{transform:scale(1);opacity:1}100%{transform:scale(.3);opacity:0}}
+.play .u-sky{animation:usky 6s ease-in-out infinite}
+@keyframes usky{0%,38%{fill:#fff}55%,88%{fill:#1d2233}100%{fill:#fff}}
+.play .u-glow{animation:uglow 6s ease-in-out infinite}
+@keyframes uglow{0%,38%{fill:#fff}55%,88%{fill:#FFD9A0}100%{fill:#fff}}
+.play .u-sub{animation:usub 6s ease-in-out infinite}
+@keyframes usub{0%,18%{transform:none;opacity:1}38%,92%{transform:translateY(-26px);opacity:0}100%{transform:none;opacity:1}}
+.play .u-add{animation:uadd 6s cubic-bezier(.3,1.3,.5,1) infinite}
+@keyframes uadd{0%,42%{transform:translateY(-24px);opacity:0}58%,92%{transform:none;opacity:1}100%{opacity:0}}
+.u-st2,.u-st3,.u-st4{opacity:0}
+.play .u-st1{animation:ust1 8s infinite}.play .u-st2{animation:ust2 8s infinite}.play .u-st3{animation:ust3 8s infinite}.play .u-st4{animation:ust4 8s infinite}
+@keyframes ust1{0%,22%{opacity:1}25%,97%{opacity:0}100%{opacity:1}}
+@keyframes ust2{0%,24%{opacity:0}27%,47%{opacity:1}50%,100%{opacity:0}}
+@keyframes ust3{0%,49%{opacity:0}52%,72%{opacity:1}75%,100%{opacity:0}}
+@keyframes ust4{0%,74%{opacity:0}77%,97%{opacity:1}100%{opacity:0}}
+.play .u-in1{animation:uin1 6s ease-out infinite}@keyframes uin1{0%,4%{opacity:0;transform:translateY(5px)}10%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in2{animation:uin2 6s ease-out infinite}@keyframes uin2{0%,12%{opacity:0;transform:translateY(5px)}18%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in3{animation:uin3 6s ease-out infinite}@keyframes uin3{0%,20%{opacity:0;transform:translateY(5px)}26%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in4{animation:uin4 6s ease-out infinite}@keyframes uin4{0%,28%{opacity:0;transform:translateY(5px)}34%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in5{animation:uin5 6s ease-out infinite}@keyframes uin5{0%,36%{opacity:0;transform:translateY(5px)}42%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in6{animation:uin6 6s ease-out infinite}@keyframes uin6{0%,44%{opacity:0;transform:translateY(5px)}50%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in7{animation:uin7 6s ease-out infinite}@keyframes uin7{0%,52%{opacity:0;transform:translateY(5px)}58%,90%{opacity:1;transform:none}100%{opacity:0}}
+.play .u-in8{animation:uin8 6s ease-out infinite}@keyframes uin8{0%,60%{opacity:0;transform:translateY(5px)}66%,90%{opacity:1;transform:none}100%{opacity:0}}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<pattern id="hatch" patternUnits="userSpaceOnUse" width="3.2" height="3.2" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="3.2" stroke="#85857F" stroke-width="0.6"/></pattern>
+<pattern id="dots" patternUnits="userSpaceOnUse" width="3.5" height="3.5"><circle cx="1.75" cy="1.75" r="0.55" fill="#E4572E"/></pattern>
+<pattern id="dotsBig" patternUnits="userSpaceOnUse" width="10" height="10"><circle cx="5" cy="5" r="1.4" fill="#E4572E"/></pattern>
+</defs></svg>
+
+<header class="top">
+  <span class="brand">FICHA<b>·</b>CASA</span>
+  <span class="stitle" id="stitle"></span>
+  <a class="pdf" href="Ficha_Composicion_Vivienda.pdf" download="Ficha_Composicion_Vivienda.pdf" title="Descargar las fichas en PDF">⤓ Fichas PDF</a>
+  <button class="ib" id="bPlay" aria-label="Reproducción automática" title="Reproducción automática (P)">▶</button>
+  <button class="ib" id="bIdx" aria-label="Índice" title="Índice">☰</button>
+  <button class="ib" id="bFs" aria-label="Pantalla completa" title="Pantalla completa (F)">⛶</button>
+</header>
+<div class="timer" id="timer"></div>
+
+<main class="deck" id="deck"></main>
+
+<footer class="bot">
+  <button class="nav-b" id="prev" aria-label="Anterior">‹</button>
+  <div class="prog" id="prog"></div>
+  <span class="count" id="count"></span>
+  <button class="nav-b next" id="next" aria-label="Siguiente">›</button>
+</footer>
+<div class="hint" id="hint">Desliza, usa las flechas o ▶ para reproducir</div>
+
+<div class="ov" id="ov"><button class="x" data-ovclose aria-label="Cerrar índice">✕</button><h3>Índice</h3><div class="ov-grid" id="ovGrid"></div></div>
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="bg" data-close></div><div class="sheet" id="sheet"><div class="grab"></div><button class="x" data-close aria-label="Cerrar">✕</button><div id="mBody"></div></div></div>
+
+<script>
+(function(){
+'use strict';
+const A='#E4572E',INK='#161616',G1='#F2F2EF',G2='#DADAD5',G3='#85857F',TINT='#FCEAE3',DARK='#3A3A3A';
+const $=s=>document.querySelector(s),$$=(s,r)=>Array.from((r||document).querySelectorAll(s));
+const r2=n=>Math.round(n*100)/100;
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+// Las animaciones son el contenido de la presentación: se reproducen aunque el sistema pida reducir movimiento.
+const reduce=false;
+const pad=n=>String(n).padStart(2,'0');
+
+// ---------- primitivas SVG ----------
+const rect=(x,y,w,h,o={})=>`<rect x="${r2(x)}" y="${r2(y)}" width="${r2(w)}" height="${r2(h)}" fill="${o.fill||'none'}" stroke="${o.stroke||'none'}" stroke-width="${o.sw||1}"${o.dash?` stroke-dasharray="${o.dash}"`:''}${o.rx?` rx="${o.rx}"`:''}${o.cls?` class="${o.cls}"`:''}${o.st?` style="${o.st}"`:''}/>`;
+const line=(x1,y1,x2,y2,o={})=>`<line x1="${r2(x1)}" y1="${r2(y1)}" x2="${r2(x2)}" y2="${r2(y2)}" stroke="${o.stroke||INK}" stroke-width="${o.sw||1}"${o.dash?` stroke-dasharray="${o.dash}"`:''} stroke-linecap="round"${o.cls?` class="${o.cls}"`:''}/>`;
+const pathd=(d,o={})=>`<path d="${d}" fill="${o.fill||'none'}" stroke="${o.stroke||INK}" stroke-width="${o.sw||1}" stroke-linejoin="round" stroke-linecap="round"${o.dash?` stroke-dasharray="${o.dash}"`:''}${o.cls?` class="${o.cls}"`:''}${o.op!=null?` opacity="${o.op}"`:''}/>`;
+const poly=(pts,o={})=>`<polygon points="${pts.map(p=>p.map(r2).join(',')).join(' ')}" fill="${o.fill||'none'}" stroke="${o.stroke||INK}" stroke-width="${o.sw||1}" stroke-linejoin="round"${o.op!=null?` opacity="${o.op}"`:''}${o.dash?` stroke-dasharray="${o.dash}"`:''}/>`;
+const txt=(x,y,s,o={})=>`<text x="${x}" y="${y}" font-family="Barlow Condensed,Arial Narrow,Arial" font-size="${o.size||8}" font-weight="${o.weight||400}" fill="${o.fill||INK}"${o.anchor?` text-anchor="${o.anchor}"`:''}${o.italic?' font-style="italic"':''}>${esc(s)}</text>`;
+const G=(x,y,inner,cls,st)=>`<g transform="translate(${r2(x)},${r2(y)})"${cls?` class="${cls}"`:''}${st?` style="${st}"`:''}>${inner}</g>`;
+function arrow(x1,y1,x2,y2,o={}){const c=o.stroke||A,sw=o.sw||1.4,ang=Math.atan2(y2-y1,x2-x1),L=o.head||4.2;const bx=x2-Math.cos(ang)*L,by=y2-Math.sin(ang)*L,nx=-Math.sin(ang)*L*.55,ny=Math.cos(ang)*L*.55;return line(x1,y1,bx,by,{stroke:c,sw})+poly([[x2,y2],[bx+nx,by+ny],[bx-nx,by-ny]],{fill:c,stroke:c,sw:.5});}
+function person(x,g,h=12,c=INK){return `<circle cx="${x}" cy="${r2(g-h+1.6)}" r="1.6" fill="${c}"/>`+line(x,g-h+3.6,x,g-h*.42,{stroke:c,sw:1.3})+line(x,g-h*.42,x-1.4,g,{stroke:c,sw:1})+line(x,g-h*.42,x+1.4,g,{stroke:c,sw:1});}
+
+// isometría simple con ajuste al área
+const C30=Math.cos(Math.PI/6);
+const proj=(x,y,z)=>[(x-y)*C30,(x+y)*.5-z];
+function iso(boxes,aw,ah,pad=2,acc=-1){
+  const faces=[];
+  boxes.map((b,i)=>({b,i})).sort((p,q)=>(p.b[0]+p.b[1]+p.b[2]+p.b[3]/2+p.b[4]/2)-(q.b[0]+q.b[1]+q.b[2]+q.b[3]/2+q.b[4]/2)).forEach(({b,i})=>{
+    const [x,y,z,w,d,h]=b,a=i===acc;
+    faces.push([[[x,y+d,z],[x+w,y+d,z],[x+w,y+d,z+h],[x,y+d,z+h]],a?'#F3A98F':'#C9C9C3'],[[[x+w,y,z],[x+w,y+d,z],[x+w,y+d,z+h],[x+w,y,z+h]],a?'#F7C7B6':G2],[[[x,y,z+h],[x+w,y,z+h],[x+w,y+d,z+h],[x,y+d,z+h]],a?TINT:'#fff']);
+  });
+  const pts=faces.flatMap(f=>f[0].map(p=>proj(...p)));
+  const mnx=Math.min(...pts.map(p=>p[0])),mxx=Math.max(...pts.map(p=>p[0])),mny=Math.min(...pts.map(p=>p[1])),mxy=Math.max(...pts.map(p=>p[1]));
+  const k=Math.min((aw-2*pad)/(mxx-mnx),(ah-2*pad)/(mxy-mny)),ox=(aw-(mxx-mnx)*k)/2-mnx*k,oy=(ah-(mxy-mny)*k)/2-mny*k;
+  return faces.map(([f,fill])=>poly(f.map(p=>{const q=proj(...p);return[ox+q[0]*k,oy+q[1]*k]}),{fill,sw:.8})).join('');
+}
+
+// ---------- íconos de estrategias (88 x 42) ----------
+const lot=()=>rect(14,3,60,36,{stroke:G3,sw:.7,dash:'2 1.5'});
+const voidR=(x,y,w,h)=>rect(x,y,w,h,{fill:'#fff',stroke:INK,sw:.8})+rect(x,y,w,h,{fill:'url(#dots)'});
+const facade=i=>line(6,38.5,82,38.5,{sw:1.2})+rect(14,4,60,34.5,{fill:'#fff',stroke:INK,sw:1.1})+i;
+const plan=i=>rect(10,3,68,36,{fill:'#fff',stroke:INK,sw:1.1})+i;
+const room=(x,y,w,h)=>rect(x,y,w,h,{fill:G1,stroke:INK,sw:.7});
+const ICONS={
+  aislada:()=>lot()+rect(28,11,32,20,{fill:G2,stroke:INK,sw:1.1})+arrow(20,21,27,21,{stroke:G3,sw:.6,head:2.5})+arrow(68,21,61,21,{stroke:G3,sw:.6,head:2.5}),
+  pareada:()=>rect(0,3,14,36,{fill:'url(#hatch)',stroke:G3,sw:.6})+lot()+rect(14,9,34,24,{fill:G2,stroke:INK,sw:1.1}),
+  medianeras:()=>rect(0,3,14,36,{fill:'url(#hatch)',stroke:G3,sw:.6})+rect(74,3,14,36,{fill:'url(#hatch)',stroke:G3,sw:.6})+lot()+rect(14,7,60,26,{fill:G2,stroke:INK,sw:1.1}),
+  agrupada:()=>iso([[0,0,0,4,2,1.2],[0,2,0,2,2,2.2],[2,2,0,2,2,.8]],88,42),
+  fragmentada:()=>iso([[0,0,0,2,1.3,1.1],[3.4,0,0,1.3,1.3,1.6],[.6,2.8,0,3,1.2,1]],88,42),
+  modular:()=>iso([[0,0,0,1,1,1],[1,0,0,1,1,1],[2,0,0,1,1,1],[0,1,0,1,1,1],[0,2,0,1,1,1],[0,0,1,1,1,1],[2,1,0,1,1,1]],88,42),
+  ortogonal:()=>pathd('M20,4 H46 V18 H70 V38 H20 Z',{fill:'#fff',sw:1.2})+pathd('M20,34 H24 V38',{sw:.6})+pathd('M46,22 H50 V18',{sw:.6})+txt(51,15,'90°',{size:5.5,fill:G3}),
+  oblicua:()=>pathd('M14,36 L28,6 L76,6 L62,36 Z',{fill:'#fff',sw:1.2})+pathd('M20.5,22 A6,6 0 0 1 24,30',{stroke:A,sw:.7}),
+  curva:()=>pathd('M12,12 C24,2 36,2 44,12 S64,22 76,12 L76,30 C64,40 52,40 44,30 S24,20 12,30 Z',{fill:'#fff',sw:1.2}),
+  plana:()=>line(4,38,84,38,{sw:1.2})+rect(20,16,56,22,{fill:G2,stroke:INK,sw:1.1})+rect(20,8,16,8,{fill:G2,stroke:INK,sw:1.1})+person(12,38),
+  inclinada:()=>line(4,38,84,38,{sw:1.2})+pathd('M20,38 V20 L48,5 L76,20 V38',{fill:G2,sw:1.1})+person(12,38),
+  ondulada:()=>line(4,38,84,38,{sw:1.2})+pathd('M20,38 V18 C30,4 44,4 52,14 S70,18 76,7 V38',{fill:G2,sw:1.1})+person(12,38),
+  laterales:()=>rect(16,3,56,36,{fill:'url(#hatch)',stroke:INK,sw:1.1})+voidR(16,3,14,18)+voidR(56,22,16,17),
+  intermedios:()=>rect(16,3,56,36,{fill:'url(#hatch)',stroke:INK,sw:1.1})+voidR(23,8,10,10)+voidR(50,9,13,8)+voidR(33,25,14,9),
+  central:()=>rect(16,3,56,36,{fill:'url(#hatch)',stroke:INK,sw:1.1})+voidR(34,12,20,18),
+  horizontal:()=>facade(rect(20,10,48,6,{fill:DARK})+rect(20,24,48,6,{fill:DARK})),
+  vertical:()=>facade([0,1,2,3,4].map(i=>rect(21+i*10.5,9,4,25,{fill:DARK})).join('')),
+  puntual:()=>facade([[20,8,8,8],[40,14,6,6],[56,8,11,6],[24,24,6,9],[44,26,12,6],[63,21,5,8]].map(r=>rect(...r,{fill:DARK})).join('')),
+  lineal:()=>plan(room(10,3,22,13)+room(32,3,24,13)+room(56,3,22,13)+room(10,26,30,13)+room(40,26,38,13)+arrow(14,21,75,21)),
+  centralC:()=>plan(room(10,3,24,14)+room(54,3,24,14)+room(10,25,24,14)+room(54,25,24,14)+rect(39,16,10,10,{fill:TINT,stroke:A,sw:.8})+arrow(39,21,30,21)+arrow(49,21,58,21)+arrow(44,16,44,7)+arrow(44,26,44,35)),
+  perimetral:()=>plan(rect(27,12,34,18,{fill:G1,stroke:INK,sw:.8})+pathd('M17,34 V7.5 H71 V34.5 H24',{stroke:A,sw:1.4})+arrow(26,34.5,19.5,34.5,{head:3.6})),
+};
+const icon=(k,vb='-2 -2 92 46')=>`<svg viewBox="${vb}" aria-hidden="true">${ICONS[k]()}</svg>`;
+
+// ---------- datos: niveles ----------
+const LEVELS=[
+ {n:'Implantación',sub:'Relación con el lote',intro:'¿Cómo se apoya la casa en su lote y cómo convive con sus vecinos?',opts:[
+  {k:'aislada',l:'Aislada',d:'La casa se separa de todos los linderos: gana luz, ventilación y fachadas en los cuatro costados.',i:'Lotes amplios, climas cálidos, casas de campo.',q:'¿Qué fachada mira hacia el mejor paisaje?'},
+  {k:'pareada',l:'Pareada',d:'Se apoya en un lindero y comparte muro con la vecina. Libera el resto del lote para jardín o patio.',i:'Lotes medianos, conjuntos de vivienda, economía de muros.',q:'Si un costado es ciego, ¿hacia dónde abres la casa?'},
+  {k:'medianeras',l:'Entre medianeras',d:'Ocupa el ancho del lote entre dos vecinos. La luz entra por el frente, el fondo y los patios.',i:'Ciudad densa, lotes angostos y profundos.',q:'¿Cómo llevas luz y aire al centro de la casa?'}]},
+ {n:'Volumetría',sub:'Organización de las masas',intro:'¿La casa es una pieza, varias piezas o una suma de módulos?',opts:[
+  {k:'agrupada',l:'Agrupada',d:'Volúmenes de distinto tamaño que se tocan o se intersecan y se leen como un conjunto compacto.',i:'Programas que piden cercanía; lotes pequeños.',q:'¿Qué volumen manda y cuáles lo acompañan?'},
+  {k:'fragmentada',l:'Fragmentada',d:'La casa se separa en piezas sueltas unidas por patios, puentes o recorridos exteriores.',i:'Climas cálidos, zonas privadas y sociales bien separadas.',q:'¿Qué ocurre en el espacio entre las piezas?'},
+  {k:'modular',l:'Modular',d:'Un mismo módulo se repite y se apila. El orden nace de la repetición y facilita construir.',i:'Vivienda progresiva, sistemas prefabricados.',q:'¿Cuál es tu módulo y cómo crece la casa?'}]},
+ {n:'Geometría',sub:'Forma en planta',intro:'¿Con qué geometría dibujas la huella de la casa?',opts:[
+  {k:'ortogonal',l:'Ortogonal',d:'Muros a 90°: orden, eficiencia constructiva y espacios fáciles de amoblar.',i:'Casi siempre: es la base racional del proyecto.',q:'¿Cómo evitas que lo ortogonal se vuelva monótono?'},
+  {k:'oblicua',l:'Oblicua',d:'Ángulos distintos a 90° que orientan la casa hacia vistas, sol o tensiones del lote.',i:'Lotes irregulares, vistas en diagonal.',q:'¿Qué justifica el giro: el sol, la vista, el lote?'},
+  {k:'curva',l:'Curva',d:'Bordes curvos que suavizan el recorrido, abrazan el espacio y guían la mirada.',i:'Espacios sociales, relación fluida con el paisaje.',q:'¿Dónde la curva aporta y dónde complica?'}]},
+ {n:'Cubierta',sub:'Forma general de la cubierta',intro:'¿Cómo remata la casa contra el cielo?',opts:[
+  {k:'plana',l:'Plana',d:'Horizontal: puede ser terraza, jardín o recolectar agua. Refuerza la lectura de caja pura.',i:'Terrazas habitables, volúmenes contundentes.',q:'¿La quinta fachada se habita?'},
+  {k:'inclinada',l:'Inclinada',d:'A una o dos aguas: evacúa la lluvia y crea espacios de doble altura bajo la cubierta.',i:'Climas lluviosos, tradición local.',q:'¿Hacia dónde cae el agua y hacia dónde sube el espacio?'},
+  {k:'ondulada',l:'Curva / ondulada',d:'Superficie continua que da expresión al volumen y variaciones de altura en el interior.',i:'Espacios singulares, gesto expresivo.',q:'¿La curva responde a algo del interior?'}]},
+ {n:'Vacíos',sub:'Organización del espacio libre',intro:'El vacío también se diseña: ¿dónde queda el aire de la casa?',opts:[
+  {k:'laterales',l:'Laterales',d:'El espacio libre se ubica en los bordes: aislamientos, jardines y patios laterales.',i:'Casas aisladas o pareadas.',q:'¿Qué espacios se abren a esos bordes?'},
+  {k:'intermedios',l:'Intermedios',d:'Pequeños patios distribuidos que ventilan e iluminan cada zona de la casa.',i:'Casas profundas entre medianeras.',q:'¿Cada espacio importante tiene su vacío?'},
+  {k:'central',l:'Central',d:'Un patio central organiza la casa a su alrededor: el corazón de la vivienda es vacío.',i:'Casa patio, climas templados y cálidos.',q:'¿Qué espacios miran al patio y cuáles le dan la espalda?'}]},
+ {n:'Fachada',sub:'Relación lleno – vacío (vanos)',intro:'¿Cómo se abren los muros hacia afuera?',opts:[
+  {k:'horizontal',l:'Horizontal',d:'Ventanas corridas que enmarcan el paisaje y subrayan la horizontalidad del volumen.',i:'Vistas largas, espacios sociales.',q:'¿Qué paisaje encuadra tu ventana corrida?'},
+  {k:'vertical',l:'Vertical',d:'Vanos altos y repetidos que generan ritmo y controlan la entrada de luz.',i:'Fachadas urbanas, control solar.',q:'¿Qué ritmo siguen tus vanos?'},
+  {k:'puntual',l:'Puntual',d:'Aberturas de distintos tamaños según cada espacio interior: la fachada se lee como composición libre.',i:'Espacios privados, fachadas expresivas.',q:'¿Cada vano responde a un espacio interior?'}]},
+ {n:'Circulación',sub:'Recorrido interior',intro:'¿Cómo te mueves dentro de la casa?',opts:[
+  {k:'lineal',l:'Lineal',d:'Un eje o pasillo conecta los espacios en secuencia, de lo público a lo privado.',i:'Casas alargadas, lotes profundos.',q:'¿El pasillo es solo paso o también lugar?'},
+  {k:'centralC',l:'Central',d:'Un hall o núcleo distribuye hacia todas las zonas. Recorridos cortos y claros.',i:'Plantas compactas, casas en altura.',q:'¿Qué hay en el centro: luz, escalera, patio?'},
+  {k:'perimetral',l:'Perimetral',d:'El recorrido bordea un núcleo o patio y acompaña las fachadas y las vistas.',i:'Casa patio, recorridos con paisaje.',q:'¿Qué ves mientras caminas tu casa?'}]},
+];
+
+// ---------- datos: principios (diagramas 160 x 56) ----------
+const PR=[
+ {n:'Eje',ref:'',d:'Línea imaginaria que ordena y conecta los elementos y da dirección al recorrido.',t:'Traza una línea desde el acceso hasta el espacio principal y alinea volúmenes o vanos sobre ella.',q:'¿Qué eje organiza tu casa: el acceso, una vista, el sol?',
+  g:()=>line(4,28,156,28,{stroke:A,sw:1,dash:'5 3'})+rect(18,16,22,24,{fill:G2,stroke:INK})+rect(58,8,44,40,{fill:G2,stroke:INK})+rect(120,18,18,20,{fill:G2,stroke:INK})+`<g class="a-slide">${arrow(140,28,156,28,{sw:1.2})}</g>`},
+ {n:'Simetría',ref:'Villa Rotonda · A. Palladio',d:'Distribución equivalente de formas a ambos lados de un eje. Transmite orden y estabilidad.',t:'Dibuja el eje y compara ambos lados: ¿qué es igual, qué cambia y por qué?',q:'¿Tu casa busca estabilidad o tensión?',
+  g:()=>rect(44,20,32,30,{fill:G2,stroke:INK})+rect(56,8,20,12,{fill:'#fff',stroke:INK})+`<g class="a-flip">${rect(84,20,32,30,{fill:G2,stroke:INK})+rect(84,8,20,12,{fill:'#fff',stroke:INK})}</g>`+line(80,2,80,54,{stroke:A,sw:1,dash:'4 2.5'})},
+ {n:'Equilibrio',ref:'',d:'Compensación visual entre partes distintas: una masa grande se equilibra con varias pequeñas.',t:'Si un volumen pesa mucho, compénsalo con varios menores, con vanos o con color.',q:'¿Qué pesa más en tu fachada y cómo lo compensas?',
+  g:()=>`<g class="a-tilt">${line(18,46,142,46,{sw:1.3})+rect(26,14,36,32,{fill:G2,stroke:INK})+rect(98,34,12,12,{fill:G2,stroke:INK})+rect(114,28,12,18,{fill:G2,stroke:INK})+rect(130,36,10,10,{fill:G2,stroke:INK})}</g>`+poly([[74,56],[86,56],[80,46]],{fill:A,stroke:A})},
+ {n:'Jerarquía',ref:'Casa Vanna Venturi · R. Venturi',d:'Un elemento se destaca por tamaño, forma, posición o color frente a los demás.',t:'Elige un solo protagonista (sala, patio, escalera) y dale más altura, luz o tamaño.',q:'¿Cuál es el espacio protagonista de tu vivienda?',
+  g:()=>[16,38,106,128].map(x=>rect(x,30,16,16,{fill:G2,stroke:INK})).join('')+rect(62,6,36,46,{fill:A,stroke:INK,cls:'a-pulse'})+line(10,46,150,46,{stroke:G3,sw:.5})},
+ {n:'Ritmo',ref:'',d:'Repetición de elementos con un intervalo reconocible (a-a-a, a-b-a-b).',t:'Define una secuencia para vanos o columnas y respétala en toda la fachada.',q:'¿Cómo se repiten tus vanos, columnas o volúmenes?',
+  g:()=>{let s='',x=14;for(let i=0;i<9;i++){const a=i%2===0;s+=rect(x,a?6:16,a?8:4,a?38:28,{fill:a?INK:G3,cls:'a-bar',st:`animation-delay:${i*.12}s`});s+=txt(x+(a?4:2),53,a?'a':'b',{size:6.5,fill:a?INK:G3,anchor:'middle',italic:true});x+=a?18:12;}return s+line(10,44,150,44,{stroke:G3,sw:.5});}},
+ {n:'Módulo',full:'Repetición / módulo',ref:'Casa Farnsworth · Mies van der Rohe',d:'Unidad de medida que se repite y coordina la estructura, los espacios y la construcción.',t:'Fija una medida base (ej. 3 × 3 m) y ajusta los espacios a múltiplos de ella.',q:'¿Cuál es el módulo de tu casa?',
+  g:()=>{let s='';for(let i=0;i<8;i++)for(let j=0;j<3;j++){const a=i===2&&j===1;s+=rect(18+i*16,6+j*16,13,13,{fill:a?A:G2,stroke:INK,sw:.7,cls:a?'a-pulse':''});}return s+txt(56.5,31,'M',{size:7,weight:700,fill:'#fff',anchor:'middle'});}},
+ {n:'Proporción',ref:'Villa Stein · Le Corbusier',d:'Relación de medida entre las partes y el todo. Ej.: rectángulo áureo 1 : 1,618.',t:'Compara alto y ancho de volúmenes y ventanas; busca relaciones que se repitan.',q:'¿Tus volúmenes y vanos dialogan en sus medidas?',
+  g:()=>rect(10,10,71.2,44,{fill:'#fff',stroke:INK,sw:1.1})+line(54,10,54,54,{sw:.7})+line(54,37.2,81.2,37.2,{sw:.7})+pathd('M10,54 A44,44 0 0 1 54,10',{stroke:A,sw:1.3})+pathd('M54,10 A27.2,27.2 0 0 1 81.2,37.2',{stroke:A,sw:1.3})+txt(92,40,'1 : 1,618',{size:11,weight:700,fill:A})},
+ {n:'Escala',ref:'',d:'Tamaño de la arquitectura en relación con el cuerpo humano y con su entorno.',t:'Dibuja siempre una persona en cortes y fachadas: mide el espacio contra el cuerpo.',q:'Al entrar, ¿la persona se siente acogida o empequeñecida?',
+  g:()=>line(6,54,154,54,{sw:1.2})+rect(22,30,14,24,{fill:G2,stroke:INK})+person(46,54,18)+rect(84,4,44,50,{fill:G2,stroke:INK})+`<g class="a-walk">${person(138,54,18,A)}</g>`},
+ {n:'Contraste',ref:'',d:'Oposición entre lleno y vacío, luz y sombra, pesado y liviano, opaco y transparente.',t:'Decide dónde la casa es muro (privacidad) y dónde es vidrio (paisaje y luz).',q:'¿Dónde será opaca tu casa y dónde transparente?',
+  g:()=>rect(24,6,50,42,{fill:INK,stroke:INK,cls:'a-swapA'})+rect(86,6,50,42,{fill:'#fff',stroke:INK,cls:'a-swapB'})+line(102.7,6,102.7,48,{sw:.5,stroke:G3})+line(119.3,6,119.3,48,{sw:.5,stroke:G3})+line(86,27,136,27,{sw:.5,stroke:G3})+txt(49,56,'lleno',{size:6.5,fill:G3,anchor:'middle',italic:true})+txt(111,56,'vacío',{size:6.5,fill:G3,anchor:'middle',italic:true})},
+ {n:'Adición',full:'Adición / sustracción',ref:'Casa Moriyama · R. Nishizawa',d:'La forma crece sumando volúmenes, o nace al excavar un sólido inicial.',t:'Parte de un sólido simple y anota cada operación: sumar, restar, desplazar.',q:'¿Tu casa se suma o se excava?',
+  g:()=>G(4,7,iso([[0,0,0,2,2,1.4],[2,.5,0,1.2,1,.8],[.4,.4,1.4,1,1,.8]],66,48,3,1),'a-float')+txt(80,32,'+ / −',{size:10,weight:700,fill:A,anchor:'middle'})+G(90,7,iso([[0,0,0,2.2,2.2,1],[0,0,1,2.2,1.1,1],[0,1.1,1,1.1,1.1,1]],66,48,3))},
+ {n:'Retícula',full:'Retícula / pauta',ref:'',d:'Malla de referencia que alinea muros, columnas y vanos. Es la base del orden constructivo.',t:'Dibuja una malla bajo tu planta; alinea muros y columnas y justifica lo que la rompe.',q:'¿Qué se alinea con tu retícula y qué la rompe?',
+  g:()=>{let s='';for(let x=8;x<=152;x+=16)s+=line(x,2,x,54,{stroke:G3,sw:.4});for(let y=6;y<=54;y+=16)s+=line(4,y,156,y,{stroke:G3,sw:.4});return s+rect(24,6,48,32,{fill:G2,stroke:INK})+rect(88,22,48,32,{fill:G2,stroke:INK})+`<g class="a-spin"><rect x="62" y="26" width="22" height="22" fill="none" stroke="${A}" stroke-width="1.3" transform="rotate(18 73 37)"/></g>`;}},
+ {n:'Transformación',ref:'',d:'Modificar una forma base —rotar, desplazar, escalar, deformar— conservando su identidad.',t:'Muestra en 3 o 4 pasos cómo tu forma inicial llega al volumen final.',q:'¿Qué operación aplicas a tu forma inicial?',
+  g:()=>rect(12,14,28,28,{fill:G2,stroke:INK})+arrow(46,28,58,28,{stroke:G3,sw:.8,head:3.2})+`<g class="a-spin"><rect x="66" y="14" width="28" height="28" fill="${G2}" stroke="${INK}"/></g>`+arrow(102,28,114,28,{stroke:G3,sw:.8,head:3.2})+rect(120,10,14,28,{fill:G2,stroke:INK})+`<g class="a-float">${rect(136,18,14,28,{fill:TINT,stroke:A})}</g>`},
+];
+const pdg=(p,vb='-4 -4 168 66')=>`<svg viewBox="${vb}" aria-hidden="true">${p.g()}</svg>`;
+
+
+// ---------- 12 principios animados en una vivienda urbana (viewBox 0 0 200 120) ----------
+const HT='url(#hatch)';
+const ground=()=>line(0,110,200,110,{sw:1.4});
+const neigh=(lh,rh)=>rect(0,110-lh,30,lh,{fill:HT,stroke:G3,sw:.6})+rect(170,110-rh,30,rh,{fill:HT,stroke:G3,sw:.6});
+const cl=(c,inner,st)=>`<g class="${c}"${st?` style="${st}"`:''}>${inner}</g>`;
+const dpath=(d,o={})=>`<path d="${d}" pathLength="100" fill="none" stroke="${o.stroke||A}" stroke-width="${o.sw||1.6}" stroke-linecap="round" class="${o.cls||'u-draw'}"/>`;
+const lbl=(x,y,s,o={})=>txt(x,y,s,Object.assign({size:7.5,weight:700,fill:A},o));
+function isoFix(boxes,k,ox,oy,acc){
+  return boxes.map((b,i)=>({b,i})).sort((p,q)=>(p.b[0]+p.b[1]+p.b[2]+p.b[3]/2+p.b[4]/2)-(q.b[0]+q.b[1]+q.b[2]+q.b[3]/2+q.b[4]/2)).map(({b,i})=>{
+    const [x,y,z,w,d,h]=b,a=acc===true||acc===i,P=(X,Y,Z)=>{const q=proj(X,Y,Z);return[ox+q[0]*k,oy+q[1]*k];};
+    return poly([[x,y+d,z],[x+w,y+d,z],[x+w,y+d,z+h],[x,y+d,z+h]].map(p=>P(...p)),{fill:a?'#F3A98F':'#C9C9C3',sw:.9})+
+      poly([[x+w,y,z],[x+w,y+d,z],[x+w,y+d,z+h],[x+w,y,z+h]].map(p=>P(...p)),{fill:a?'#F7C7B6':G2,sw:.9})+
+      poly([[x,y,z+h],[x+w,y,z+h],[x+w,y+d,z+h],[x,y+d,z+h]].map(p=>P(...p)),{fill:a?TINT:'#fff',sw:.9});
+  }).join('');
+}
+const UANI=[
+ // 01 eje — planta entre medianeras: de la calle al patio
+ ()=>rect(18,12,174,10,{fill:HT,stroke:G3,sw:.5})+rect(18,98,174,10,{fill:HT,stroke:G3,sw:.5})+rect(0,22,16,76,{fill:'#E2E2DD'})+`<text x="9" y="60" font-family="Barlow Condensed,Arial" font-size="7" font-weight="700" fill="${G3}" text-anchor="middle" transform="rotate(-90 9 60)">CALLE</text>`+
+   rect(18,22,174,76,{fill:'#fff',stroke:INK,sw:1.2})+[[18,22,46,28],[64,22,40,28],[104,22,40,28],[18,70,46,28],[64,70,40,28],[104,70,40,28]].map(r=>rect(...r,{fill:G1,stroke:INK,sw:.7})).join('')+
+   rect(144,22,48,76,{fill:'#E3EFD9',stroke:INK,sw:.7})+`<circle cx="168" cy="60" r="11" fill="#9CC48A" stroke="${INK}" stroke-width=".7"/>`+lbl(168,94,'patio',{fill:'#5d8a4d',anchor:'middle'})+
+   rect(16,54,4,12,{fill:A})+dpath('M8,60 H186',{sw:1.8})+lbl(30,46,'EJE',{})+cl('u-walk',`<circle cx="10" cy="60" r="4" fill="${A}" stroke="#fff" stroke-width="1"/>`),
+ // 02 simetría — fachada urbana que se espeja
+ ()=>neigh(70,84)+ground()+cl('u-in1',`<path d="M100,110 H50 V46 L100,22" fill="#fff" stroke="${INK}" stroke-width="1.3" stroke-linejoin="round"/>${rect(60,56,16,14,{fill:DARK})+rect(60,80,16,14,{fill:DARK})}`)+
+   cl('u-mirror',`<g transform="translate(200,0) scale(-1,1)"><path d="M100,110 H50 V46 L100,22" fill="#fff" stroke="${INK}" stroke-width="1.3" stroke-linejoin="round"/>${rect(60,56,16,14,{fill:DARK})+rect(60,80,16,14,{fill:DARK})}</g>`)+
+   rect(92,88,16,22,{fill:A})+`<circle cx="100" cy="40" r="5" fill="${DARK}"/>`+line(100,8,100,116,{stroke:A,sw:1,dash:'4 3'}),
+ // 03 equilibrio — masa opaca compensada con vanos pequeños
+ ()=>neigh(80,60)+ground()+cl('u-in1',rect(40,40,52,70,{fill:'#3a3a3a',stroke:INK}))+rect(92,66,72,44,{fill:'#fff',stroke:INK,sw:1.2})+
+   cl('u-in3',rect(100,74,12,12,{fill:DARK}))+cl('u-in4',rect(120,74,12,12,{fill:DARK}))+cl('u-in5',rect(140,74,12,12,{fill:DARK})+line(96,92,160,92,{sw:1}))+
+   cl('u-beam',line(40,114,160,114,{stroke:A,sw:2})+rect(56,108,18,6,{fill:A})+rect(130,110,8,4,{fill:A})+rect(142,110,8,4,{fill:A})+rect(118,110,8,4,{fill:A}))+poly([[100,114],[95,120],[105,120]],{fill:A,stroke:A}),
+ // 04 jerarquía — la doble altura protagonista
+ ()=>neigh(92,76)+ground()+rect(40,24,124,86,{fill:'#fff',stroke:INK,sw:1.2})+
+   [[48,32],[68,32],[132,32],[48,60],[68,60],[132,60],[48,86],[68,86],[132,86]].map(([x,y])=>rect(x,y,14,12,{fill:DARK})).join('')+
+   cl('u-grow',rect(90,32,34,66,{fill:TINT,stroke:A,sw:2}))+cl('u-in6',lbl(107,108,'DOBLE ALTURA',{anchor:'middle',size:6.5})),
+ // 05 ritmo — vanos a-b-a-b que se encienden en secuencia
+ ()=>neigh(70,70)+ground()+rect(34,36,132,74,{fill:'#fff',stroke:INK,sw:1.2})+
+   [0,1,2,3,4,5,6].map(i=>{const a=i%2===0,x=42+i*17.5;return cl('u-in'+(i+1),rect(x,a?46:54,a?10:5,a?50:34,{fill:a?INK:G3})+lbl(x+(a?5:2.5),118,a?'a':'b',{anchor:'middle',fill:a?INK:G3,size:7}));}).join(''),
+ // 06 módulo — crujías de 3 m que llenan el lote
+ ()=>rect(18,12,174,10,{fill:HT,stroke:G3,sw:.5})+rect(18,98,174,10,{fill:HT,stroke:G3,sw:.5})+rect(18,22,168,76,{fill:'#fff',stroke:INK,sw:1.2})+
+   [0,1,2,3,4,5,6].map(c=>cl('u-in'+(c+1),[0,1,2].map(r=>rect(20+c*24,24+r*24.3,20,20.3,{fill:c===0&&r===0?TINT:G1,stroke:c===0&&r===0?A:G3,sw:.6})).join('')+[0,1,2,3].map(r=>rect(17+c*24,20+r*24.3,5,5,{fill:INK})).join(''))).join('')+
+   lbl(30,37,'3 m',{anchor:'middle',size:7}),
+ // 07 proporción — trazos reguladores sobre la fachada
+ ()=>neigh(66,66)+ground()+rect(50,48,100,62,{fill:'#fff',stroke:INK,sw:1.3})+cl('u-in1',rect(58,58,26,16,{fill:DARK})+rect(116,82,26,28,{fill:DARK}))+
+   dpath('M50,110 L150,48',{sw:1.2})+dpath('M88,48 L150,86',{sw:1.2,cls:'u-draw2'})+cl('u-in4',line(112,48,112,110,{stroke:A,sw:.8,dash:'3 2'}))+dpath('M50,110 A62,62 0 0 1 112,48',{sw:1,cls:'u-draw3'})+cl('u-in6',lbl(100,40,'1 : 1,618',{anchor:'middle',size:9})),
+ // 08 escala — de un acceso bajo a la doble altura
+ ()=>ground()+rect(60,74,40,36,{fill:G1,stroke:INK,sw:1.2})+rect(100,30,70,80,{fill:'#fff',stroke:INK,sw:1.2})+line(60,74,100,74,{sw:2.2})+line(100,30,170,30,{sw:2.2})+
+   cl('u-in2',lbl(80,70,'2,4 m',{anchor:'middle',size:7})+line(64,76,64,108,{stroke:A,sw:.7}))+cl('u-in5',lbl(135,26,'5 m',{anchor:'middle',size:7})+line(166,32,166,108,{stroke:A,sw:.7}))+
+   rect(4,106,56,4,{fill:'#E2E2DD'})+lbl(30,118,'calle',{anchor:'middle',fill:G3,size:6.5})+cl('u-walk2',person(20,110,24,A)),
+ // 09 contraste — opaco arriba, transparente abajo; día y noche
+ ()=>`<rect x="0" y="0" width="200" height="110" class="u-sky" fill="#fff"/>`+neigh(86,70)+ground()+rect(40,30,120,46,{fill:INK,stroke:INK})+
+   `<rect x="40" y="76" width="120" height="34" class="u-glow" fill="#fff" stroke="${INK}" stroke-width="1.2"/>`+[70,100,130].map(x=>line(x,76,x,110,{sw:.8})).join('')+
+   lbl(100,57,'LLENO',{anchor:'middle',fill:'#fff',size:8})+cl('u-in3',lbl(100,98,'VACÍO',{anchor:'middle',size:8})),
+ // 10 adición / sustracción — excavar terraza, sumar volumen
+ ()=>isoFix([[0,0,0,4,3,1],[0,0,1,4,1.5,1],[2,1.5,1,2,1.5,1]],15,95,52)+cl('u-add',isoFix([[1,0,2,2,1.5,.9]],15,95,52,true))+cl('u-sub',isoFix([[0,1.5,1,2,1.5,1]],15,95,52))+
+   cl('u-in3',lbl(30,26,'− SUSTRAER',{size:8}))+cl('u-in5',lbl(140,20,'+ SUMAR',{size:8})),
+ // 11 retícula — malla, columnas, muros y la escalera que rompe
+ ()=>rect(20,10,160,8,{fill:HT,stroke:G3,sw:.5})+rect(20,102,160,8,{fill:HT,stroke:G3,sw:.5})+rect(20,18,160,84,{fill:'#fff',stroke:INK,sw:1.1})+
+   [0,1,2,3,4,5,6,7,8].map(i=>`<path d="M${20+i*20},14 V106" pathLength="100" fill="none" stroke="${G3}" stroke-width=".5" class="u-draw"/>`).join('')+[0,1,2,3,4].map(i=>`<path d="M16,${18+i*21} H184" pathLength="100" fill="none" stroke="${G3}" stroke-width=".5" class="u-draw"/>`).join('')+
+   cl('u-in3',[0,2,4,6,8].map(c=>[0,2,4].map(r=>rect(17+c*20,15+r*21,6,6,{fill:INK})).join('')).join(''))+
+   cl('u-in5',pathd('M20,60 H100 M100,18 V60 M140,60 V102 M140,60 H180',{sw:2.4}))+cl('u-in7',`<g transform="rotate(-24 120 82)">${rect(104,72,34,16,{fill:TINT,stroke:A,sw:1.3})}${[0,1,2,3].map(i=>line(110+i*7,72,110+i*7,88,{stroke:A,sw:.6})).join('')}</g>`+lbl(150,96,'rompe',{size:7})),
+ // 12 transformación — de la caja al proyecto
+ ()=>{const k=14,ox=95,oy=48;const st=[[[0,0,0,4,3,2]],[[0,0,0,4,1.4,2],[0,1.6,0,4,1.4,2]],[[0,0,0,4,1.4,2],[1,1.6,0,3,1.4,1]],[[0,0,0,1.5,1.4,2],[2.5,0,0,1.5,1.4,2],[1.5,0,1.2,1,1.4,.8],[1,1.6,0,3,1.4,1]]];
+   const nm=['1 · forma base','2 · dividir','3 · desplazar','4 · vaciar'];
+   return st.map((b,i)=>cl('u-st'+(i+1),isoFix(b,k,ox,oy,i===3?2:-1)+lbl(100,116,nm[i],{anchor:'middle',size:9}))).join('')+[0,1,2,3].map(i=>cl('u-st'+(i+1),`<circle cx="${82+i*12}" cy="8" r="3.5" fill="${A}"/>`)+`<circle cx="${82+i*12}" cy="8" r="3.5" fill="none" stroke="${A}" stroke-width=".8"/>`).join('');},
+];
+const URB=[
+ 'En un lote entre medianeras, el eje une la calle con el patio del fondo y ordena la secuencia: acceso, zona social, zona privada.',
+ 'Una fachada simétrica da presencia y orden frente a la calle. Úsala si la casa quiere verse estable y representativa.',
+ 'Si un volumen opaco domina la fachada, compénsalo al otro lado con vanos menores, un balcón o un retroceso.',
+ 'La doble altura de la sala, el vano más grande o el acceso marcado dicen cuál es el espacio protagonista.',
+ 'Hacia la calle, la repetición de vanos (a-b-a-b) ordena la fachada y la hace dialogar con las vecinas.',
+ 'Divide el lote en crujías iguales (ej. 3 m): columnas, cuartos y vanos coinciden con el módulo.',
+ 'Trazos reguladores: alinea las esquinas de los vanos con las diagonales de la fachada para que todo dialogue.',
+ 'Un acceso bajo y comprimido hace que la doble altura de la sala se sienta más amplia al entrar.',
+ 'Volumen opaco arriba para la privacidad y planta baja transparente; de noche la casa se ilumina hacia afuera.',
+ 'Excava el volumen urbano para ganar terrazas y patios; suma volúmenes ligeros sobre la cubierta.',
+ 'Una malla regular ordena columnas y muros; la escalera o un patio pueden romperla para destacar.',
+ 'De la caja que llena el lote a la casa: dividir, desplazar y vaciar hasta que entren la luz y el aire.',
+];
+const uani=(i,cls='')=>`<svg viewBox="0 0 200 120" class="${cls}" aria-hidden="true">${UANI[i]()}</svg>`;
+
+
+// ---------- animación "dibujo" ----------
+function drawIn(svg,delay=0){
+  if(!svg||reduce)return;
+  const els=svg.querySelectorAll('line,rect,polygon,path,circle,text');
+  els.forEach((el,i)=>{
+    const d=delay+Math.min(i*22,900);
+    if(el.tagName==='text'){el.style.transition='none';el.style.opacity=0;requestAnimationFrame(()=>{el.style.transition=`opacity .5s ${d+300}ms`;el.style.opacity=1;});return;}
+    let L=0;try{L=el.getTotalLength();}catch(e){}
+    const hasStroke=el.getAttribute('stroke')&&el.getAttribute('stroke')!=='none';
+    el.style.transition='none';
+    if(hasStroke&&L>0){el.style.strokeDasharray=L;el.style.strokeDashoffset=L;}
+    el.style.fillOpacity=0;
+    el.getBoundingClientRect();
+    requestAnimationFrame(()=>{
+      el.style.transition=`stroke-dashoffset .8s cubic-bezier(.6,0,.3,1) ${d}ms, fill-opacity .5s ease ${d+380}ms`;
+      el.style.strokeDashoffset=0;el.style.fillOpacity=1;
+      setTimeout(()=>{el.style.strokeDasharray='';el.style.strokeDashoffset='';el.style.transition='';},d+1300);
+    });
+  });
+}
+
+// ---------- escena 3D de la casa ----------
+function makeScene(){
+  // casas: [x,y,w,d,h]; techo opcional por esquina
+  return {
+    lot:[0,0,10,8],
+    masses:[{id:'A',x:1,y:1,w:5,d:2.5,h:2.4,roof:[1.2,1.2,0,0]},{id:'B',x:1,y:3.5,w:2.2,d:3.5,h:1.3,roof:[0,0,0,0]},{id:'C',x:6,y:1,w:3,d:6,h:1.3,roof:[0,0,0,0]}],
+    neigh:[{x:-3.2,y:0,w:2.8,d:8,h:1.9},{x:10.4,y:0,w:2.8,d:8,h:2.6}],
+    patio:[[3.2,3.5],[6,3.5],[6,7],[3.2,7]],
+    tree:[4.6,5.4],
+    foot:[[1,1],[9,1],[9,7],[6,7],[6,3.5],[3.2,3.5],[3.2,7],[1,7]],
+    path:[[[4.6,9.4],[4.6,4.3],[2.1,2.3]],[[4.6,4.3],[7.5,2.6],[7.5,6.2]]],
+    // ventanas: masa, cara (0:y0 1:x1 2:y1 3:x0), [u0,u1,z0,z1]
+    wins:[['A',2,[[.08,.92,1.45,1.9]]],['C',1,[[.12,.2,.25,1.05],[.32,.4,.25,1.05],[.52,.6,.25,1.05],[.72,.8,.25,1.05]]],['C',3,[[.62,.7,.25,1.05],[.78,.86,.25,1.05]]],['B',2,[[.15,.4,.6,1],[.6,.8,.25,.6]]],['A',3,[[.2,.8,1.5,1.9]]],['B',3,[[.2,.5,.3,1]]]],
+  };
+}
+const SC=makeScene();
+function renderHouse(st){
+  // st: {th, lot, neigh, mass, foot, roof, patio, win, ghost, path, march, k, cx, cy, dark}
+  const th=st.th, c=Math.cos(th), s=Math.sin(th), cx0=5, cy0=4, k=st.k||26, OX=st.cx||300, OY=st.cy||250;
+  const rot=(x,y)=>[cx0+(x-cx0)*c-(y-cy0)*s, cy0+(x-cx0)*s+(y-cy0)*c];
+  const P=(x,y,z)=>{const [a,b]=rot(x,y);return [OX+(a-b)*C30*k-((cx0-cy0)*C30*k), OY+((a+b)*.5-z)*k-((cx0+cy0)*.5*k)];};
+  const depth=(x,y)=>{const [a,b]=rot(x,y);return a+b;};
+  const out=[];
+  const strokeC=st.dark?'#e9e9e4':INK;
+  const pts=a=>a.map(p=>p.map(r2).join(',')).join(' ');
+  // suelo
+  if(st.lot>0){
+    const L=SC.lot;const g=[[L[0]-1,L[1]-1],[L[2]+1,L[1]-1],[L[2]+1,L[3]+2.2],[L[0]-1,L[3]+2.2]];
+    out.push(`<polygon points="${pts(g.map(p=>P(p[0],p[1],0)))}" fill="${st.dark?'#1c1c1c':'#f4f4f1'}" opacity="${st.lot}"/>`);
+    const street=[[L[0]-4,L[3]+.8],[L[2]+4,L[3]+.8],[L[2]+4,L[3]+2.2],[L[0]-4,L[3]+2.2]];
+    out.push(`<polygon points="${pts(street.map(p=>P(p[0],p[1],0)))}" fill="${st.dark?'#2a2a2a':'#e2e2dd'}" opacity="${st.lot}"/>`);
+    const lp=[[L[0],L[1]],[L[2],L[1]],[L[2],L[3]],[L[0],L[3]]];
+    out.push(`<polygon points="${pts(lp.map(p=>P(p[0],p[1],0)))}" fill="${st.dark?'#242424':'#fff'}" stroke="${A}" stroke-width="1.6" stroke-dasharray="6 4" opacity="${st.lot}"/>`);
+  }
+  if(st.patio>0){
+    out.push(`<polygon points="${pts(SC.patio.map(p=>P(p[0],p[1],0)))}" fill="${A}" fill-opacity="${.18*st.patio}" stroke="${A}" stroke-width="1" opacity="${st.patio}"/>`);
+    out.push(`<polygon points="${pts(SC.patio.map(p=>P(p[0],p[1],0)))}" fill="url(#dotsBig)" opacity="${st.patio*.8}"/>`);
+  }
+  // objetos 3D
+  const objs=[];
+  const boxFaces=(b,h,roofAmt,fillTop,fillSide,op,isMass)=>{
+    const {x,y,w,d}=b;const r=b.roof||[0,0,0,0];
+    const cs=[[x,y],[x+w,y],[x+w,y+d],[x,y+d]];
+    const zt=cs.map((_,i)=>h+(r[i]||0)*roofAmt);
+    const faces=[];
+    const normals=[[0,-1],[1,0],[0,1],[-1,0]];
+    for(let i=0;i<4;i++){
+      const j=(i+1)%4;const n=normals[i];
+      const nr=[n[0]*c-n[1]*s,n[0]*s+n[1]*c];
+      if(nr[0]+nr[1]<=0)continue;
+      const shade=.5+.5*((nr[0]*.8-nr[1]*.3+1)/2);
+      const col=st.dark?`rgb(${Math.round(70+70*shade)},${Math.round(70+70*shade)},${Math.round(68+66*shade)})`:`rgb(${Math.round(170+60*shade)},${Math.round(170+60*shade)},${Math.round(165+58*shade)})`;
+      const f=[P(cs[i][0],cs[i][1],0),P(cs[j][0],cs[j][1],0),P(cs[j][0],cs[j][1],zt[j]),P(cs[i][0],cs[i][1],zt[i])];
+      let deco='';
+      if(isMass&&st.win>0){
+        SC.wins.filter(wn=>wn[0]===b.id&&wn[1]===i).forEach(wn=>wn[2].forEach(([u0,u1,z0,z1])=>{
+          const lerp=(u)=>[cs[i][0]+(cs[j][0]-cs[i][0])*u,cs[i][1]+(cs[j][1]-cs[i][1])*u];
+          const zz1=z0+(z1-z0)*st.win;
+          const a=lerp(u0),bb=lerp(u1);
+          const q=[P(a[0],a[1],z0),P(bb[0],bb[1],z0),P(bb[0],bb[1],zz1),P(a[0],a[1],zz1)];
+          deco+=`<polygon points="${pts(q)}" fill="${st.dark?'#0e0e0e':'#2c2c2c'}" stroke="${strokeC}" stroke-width=".6" opacity="${op}"/>`;
+        }));
+      }
+      faces.push(`<polygon points="${pts(f)}" fill="${fillSide||col}" stroke="${strokeC}" stroke-width="1.1" stroke-linejoin="round" opacity="${op}"/>`+deco);
+    }
+    const top=cs.map((p,i)=>P(p[0],p[1],zt[i]));
+    faces.push(`<polygon points="${pts(top)}" fill="${fillTop}" stroke="${strokeC}" stroke-width="1.1" stroke-linejoin="round" opacity="${op}"/>`);
+    return faces.join('');
+  };
+  if(st.neigh>0)SC.neigh.forEach(n=>objs.push({d:depth(n.x+n.w/2,n.y+n.d/2),s:boxFaces(n,n.h*st.neigh,0,st.dark?'#2b2b2b':'#ececE8',st.dark?'#242424':'#e3e3de',.5*st.neigh,false)}));
+  if(st.mass>0.001)SC.masses.forEach(m=>{const op=1-st.ghost*.72;objs.push({d:depth(m.x+m.w/2,m.y+m.d/2),s:boxFaces(m,m.h*st.mass,st.roof,m.id==='A'&&st.roof>.05?(st.dark?'#3b2a24':TINT):(st.dark?'#3a3a3a':'#fff'),null,op,true)});});
+  if(st.patio>0.02){const [tx,ty]=SC.tree;const b=P(tx,ty,0),t=P(tx,ty,1.6*st.patio);objs.push({d:depth(tx,ty)+.2,s:`<line x1="${r2(b[0])}" y1="${r2(b[1])}" x2="${r2(t[0])}" y2="${r2(t[1])}" stroke="${strokeC}" stroke-width="1.6"/><circle cx="${r2(t[0])}" cy="${r2(t[1])}" r="${r2(14*st.patio)}" fill="#7DA86B" fill-opacity=".85" stroke="${strokeC}" stroke-width="1"/>`});}
+  objs.sort((a,b)=>a.d-b.d).forEach(o=>out.push(o.s));
+  if(st.foot>0)out.push(`<polygon points="${pts(SC.foot.map(p=>P(p[0],p[1],0)))}" fill="${A}" fill-opacity="${.12*st.foot}" stroke="${A}" stroke-width="2.4" opacity="${st.foot}" stroke-linejoin="round"/>`);
+  if(st.path>0)SC.path.forEach(pl=>{const q=pl.map(p=>P(p[0],p[1],.05));out.push(`<polyline points="${pts(q)}" fill="none" stroke="${A}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" stroke-dashoffset="${r2(-(st.march||0))}" opacity="${st.path}"/>`);const e=q[q.length-1],p2=q[q.length-2];const ang=Math.atan2(e[1]-p2[1],e[0]-p2[0]);out.push(`<polygon points="${pts([[e[0]+Math.cos(ang)*8,e[1]+Math.sin(ang)*8],[e[0]+Math.cos(ang+2.3)*7,e[1]+Math.sin(ang+2.3)*7],[e[0]+Math.cos(ang-2.3)*7,e[1]+Math.sin(ang-2.3)*7]])}" fill="${A}" opacity="${st.path}"/>`);});
+  // persona de escala
+  if(st.lot>0){const p=P(2.3,8.9,0);out.push(`<g opacity="${st.lot}" transform="translate(${r2(p[0])},${r2(p[1])})"><circle cx="0" cy="-${r2(k*.72)}" r="${r2(k*.09)}" fill="${A}"/><line x1="0" y1="-${r2(k*.6)}" x2="0" y2="-${r2(k*.25)}" stroke="${A}" stroke-width="2.4" stroke-linecap="round"/><line x1="0" y1="-${r2(k*.25)}" x2="-3" y2="0" stroke="${A}" stroke-width="2" stroke-linecap="round"/><line x1="0" y1="-${r2(k*.25)}" x2="3" y2="0" stroke="${A}" stroke-width="2" stroke-linecap="round"/></g>`);}
+  return out.join('');
+}
+
+
+// ---------- volumetrías 3D animadas de cada estrategia (viewBox 0 0 400 300) ----------
+const V3=(function(){
+  const VW=400,VH=300;
+  const R=(x,y,w,d)=>[[x,y],[x+w,y],[x+w,y+d],[x,y+d]];
+  const area=fp=>{let s=0;for(let i=0;i<fp.length;i++){const a=fp[i],b=fp[(i+1)%fp.length];s+=a[0]*b[1]-b[0]*a[1];}return s/2;};
+  const cen=fp=>[fp.reduce((m,p)=>m+p[0],0)/fp.length,fp.reduce((m,p)=>m+p[1],0)/fp.length];
+  function prism(fp,h,kind='m',z0=0){
+    if(area(fp)<0)fp=fp.slice().reverse();
+    const faces=[];
+    for(let i=0;i<fp.length;i++){const a=fp[i],b=fp[(i+1)%fp.length],dx=b[0]-a[0],dy=b[1]-a[1],L=Math.hypot(dx,dy)||1;
+      faces.push({p:[[a[0],a[1],z0],[b[0],b[1],z0],[b[0],b[1],z0+h],[a[0],a[1],z0+h]],n:[dy/L,-dx/L,0]});}
+    faces.push({p:fp.map(q=>[q[0],q[1],z0+h]),n:[0,0,1]});
+    const c=cen(fp);return {kind,faces,cx:c[0],cy:c[1],cz:z0};
+  }
+  const box=(x,y,w,d,h,kind='m',z0=0)=>prism(R(x,y,w,d),h,kind,z0);
+  const WIN='#2c2c2c';
+  function winY(o,y,x0,x1,z0,z1){o.faces.push({p:[[x0,y+.02,z0],[x1,y+.02,z0],[x1,y+.02,z1],[x0,y+.02,z1]],n:[0,1,0],dec:1});}
+  function winX(o,x,y0,y1,z0,z1){o.faces.push({p:[[x+.02,y0,z0],[x+.02,y1,z0],[x+.02,y1,z1],[x+.02,y0,z1]],n:[1,0,0],dec:1});}
+  const LOT=(w=8,d=6)=>[{p:R(-2.7,-.5,w+5.4,d+1.9),fill:'#F1F1EC'},{p:R(-2.7,d+.4,w+5.4,1),fill:'#E0E0DA'},{p:R(0,0,w,d),fill:'#fff',stroke:A,sw:1.4,dash:'6 4'}];
+  const BASE=(x,y,w,d)=>[{p:R(x,y,w,d),fill:'#F1F1EC'}];
+  const GREEN=(x,y,w,d)=>({p:R(x,y,w,d),fill:'#DCEBCF',stroke:'#9CC48A',sw:1});
+  const ROOM=(x,y,w,d)=>({p:R(x,y,w,d),fill:G1,stroke:'#B9B9B3',sw:.8});
+  const NB=(x,w,h)=>box(x,0,w,6,h,'nb');
+
+  // cubierta inclinada a dos aguas
+  function gable(W,D,h,rz){const m=D/2;return {kind:'m',cx:W/2,cy:D/2,cz:0,faces:[
+    {p:[[0,0,0],[W,0,0],[W,0,h],[0,0,h]],n:[0,-1,0]},{p:[[0,D,0],[W,D,0],[W,D,h],[0,D,h]],n:[0,1,0]},
+    {p:[[0,0,0],[0,D,0],[0,D,h],[0,m,rz],[0,0,h]],n:[-1,0,0]},{p:[[W,0,0],[W,D,0],[W,D,h],[W,m,rz],[W,0,h]],n:[1,0,0]},
+    {p:[[0,m,rz],[W,m,rz],[W,D,h],[0,D,h]],n:[0,rz-h,m],roof:1},{p:[[0,0,h],[W,0,h],[W,m,rz],[0,m,rz]],n:[0,-(rz-h),m],roof:1}]};}
+  // cubierta ondulada
+  function wave(W,D){const N=16,z=x=>2+.55*Math.sin(x*1.25+.3),xs=[...Array(N+1)].map((_,i)=>i/N*W);
+    const f=[{p:[[0,D,0],[W,D,0],...xs.slice().reverse().map(x=>[x,D,z(x)])],n:[0,1,0]},{p:[[0,0,0],[W,0,0],...xs.slice().reverse().map(x=>[x,0,z(x)])],n:[0,-1,0]},
+      {p:[[0,0,0],[0,D,0],[0,D,z(0)],[0,0,z(0)]],n:[-1,0,0]},{p:[[W,0,0],[W,D,0],[W,D,z(W)],[W,0,z(W)]],n:[1,0,0]}];
+    for(let i=0;i<N;i++){const a=xs[i],b=xs[i+1];f.push({p:[[a,0,z(a)],[b,0,z(b)],[b,D,z(b)],[a,D,z(a)]],n:[-(z(b)-z(a))/(b-a),0,1],roof:1});}
+    return {kind:'m',cx:W/2,cy:D/2,cz:0,faces:f};}
+  function sCurve(){const top=[],bot=[];for(let i=0;i<=16;i++){const x=i/16*6,y=1.8+Math.sin(i/16*Math.PI*2)*1.1;top.push([x,y]);bot.push([x,y+1.5]);}return prism(top.concat(bot.reverse()),1.6);}
+
+  const S={
+    aislada:()=>({ground:LOT(),objs:[box(2,1.5,4,3,1.6)],trees:[[.9,4.9],[7.1,1]],paths:[]}),
+    pareada:()=>({ground:LOT(),objs:[NB(-2.6,2.6,2.1),box(0,1,4.4,3.8,1.8)],trees:[[6.3,3]]}),
+    medianeras:()=>({ground:LOT(),objs:[NB(-2.6,2.6,2.6),NB(8,2.6,2),box(0,.6,8,4.4,2.2)]}),
+    agrupada:()=>({ground:BASE(-1,-1,7,7.2),objs:[box(0,0,4.6,2.4,1.5),box(0,2.4,2.4,2.6,2.8),box(2.4,2.4,2.4,2.6,1)]}),
+    fragmentada:()=>({ground:BASE(-1,-1,8.2,7.4),objs:[box(0,0,2.6,1.8,1.4),box(4.2,0,1.8,1.8,2.2),box(1,3.4,3.8,1.6,1.2)],trees:[[5.4,4.2]],paths:[[[1.3,1.8],[2.4,3.4]],[[2.6,.9],[4.2,.9]],[[4.6,3.4],[5.1,1.8]]],pathOver:0}),
+    modular:()=>{const o=[];[[0,0,0],[1.4,0,0],[2.8,0,0],[0,1.4,0],[0,2.8,0],[2.8,1.4,0],[0,0,1.4],[1.4,0,1.4],[0,1.4,1.4]].forEach(([x,y,z])=>o.push(box(x+.04,y+.04,1.32,1.32,1.32,'m',z)));return {ground:BASE(-1,-1,6.2,6.2),objs:o};},
+    ortogonal:()=>({ground:BASE(-1,-1,7,6.6),objs:[prism([[0,0],[5,0],[5,2],[2,2],[2,4.6],[0,4.6]],1.7)]}),
+    oblicua:()=>({ground:BASE(-1,-1,8.4,5.6),objs:[prism([[0,0],[4.6,0],[6.4,3.6],[1.8,3.6]],1.7)]}),
+    curva:()=>({ground:BASE(-1,-.4,8,6),objs:[sCurve()]}),
+    plana:()=>{const s=box(-.25,-.25,5.5,3.7,.18,'acc',1.6);s.bias=.01;return {ground:BASE(-1,-1,7,5.2),objs:[box(0,0,5,3.2,1.6),s],people:[[5.8,3.6]]};},
+    inclinada:()=>({ground:BASE(-1,-1,7,5.2),objs:[gable(5,3.2,1.4,2.7)],people:[[5.8,3.6]]}),
+    ondulada:()=>({ground:BASE(-1,-1,7,5.2),objs:[wave(5,3.2)],people:[[5.8,3.6]]}),
+    laterales:()=>({ground:LOT().concat([GREEN(5.4,0,2.6,6),GREEN(0,4.4,5.4,1.6)]),objs:[NB(-2.6,2.6,2.2),box(0,0,5.4,4.4,1.8)],trees:[[6.7,2],[2,5.3]]}),
+    intermedios:()=>({ground:LOT().concat([GREEN(2.5,1.8,3,1.2),GREEN(0,4.6,3,1.4)]),objs:[NB(-2.6,2.6,2.2),NB(8,2.6,1.9),box(0,0,8,1.8,1.8),box(0,1.8,2.5,1.2,1.8),box(5.5,1.8,2.5,1.2,1.8),box(0,3,8,1.6,1.8),box(3,4.6,5,1.4,1.8)],trees:[[4,2.4],[1.5,5.3]]}),
+    central:()=>({ground:LOT().concat([GREEN(2,1.8,4,2.4)]),objs:[NB(-2.6,2.6,2.2),NB(8,2.6,1.9),box(0,0,8,1.8,1.8),box(0,1.8,2,2.4,1.8),box(6,1.8,2,2.4,1.8),box(0,4.2,8,1.8,1.8)],trees:[[4,3]]}),
+    horizontal:()=>{const o=box(0,0,6,3,2.2);winY(o,3,.4,5.6,.45,1);winY(o,3,.4,5.6,1.35,1.9);winX(o,6,.3,2.7,.45,1);winX(o,6,.3,2.7,1.35,1.9);return {ground:BASE(-1,-1,8,5),objs:[o],people:[[6.8,3.6]]};},
+    vertical:()=>{const o=box(0,0,6,3,2.2);for(let i=0;i<8;i++)winY(o,3,.45+i*.72,.75+i*.72,.3,1.95);for(let i=0;i<4;i++)winX(o,6,.35+i*.72,.65+i*.72,.3,1.95);return {ground:BASE(-1,-1,8,5),objs:[o],people:[[6.8,3.6]]};},
+    puntual:()=>{const o=box(0,0,6,3,2.2);[[.5,1.3,.4,1.1],[1.9,2.4,1.3,1.8],[3,4.2,.5,1],[4.6,5.4,1.2,1.95],[2.6,3.1,.3,.8]].forEach(w=>winY(o,3,...w));[[.4,1.1,1.2,1.9],[1.6,2.6,.4,.9]].forEach(w=>winX(o,6,...w));return {ground:BASE(-1,-1,8,5),objs:[o],people:[[6.8,3.6]]};},
+    lineal:()=>({ground:BASE(-1,-1,10,5).concat([ROOM(0,0,2.6,1.1),ROOM(2.6,0,2.8,1.1),ROOM(5.4,0,2.6,1.1),ROOM(0,1.9,3.6,1.1),ROOM(3.6,1.9,4.4,1.1)]),objs:[box(0,0,8,3,1.6,'ghost')],paths:[[[.2,1.5],[7.7,1.5]]],pathOver:1}),
+    centralC:()=>({ground:BASE(-1,-1,8,8).concat([ROOM(0,0,2.2,2.2),ROOM(3.8,0,2.2,2.2),ROOM(0,3.8,2.2,2.2),ROOM(3.8,3.8,2.2,2.2)]),objs:[box(0,0,6,6,1.6,'ghost'),box(2.4,2.4,1.2,1.2,1.9,'acc')],paths:[[[3,2.3],[3,.4]],[[3,3.7],[3,5.6]],[[2.3,3],[.4,3]],[[3.7,3],[5.6,3]]],pathOver:1}),
+    perimetral:()=>({ground:BASE(-1,-1,10,8),objs:[box(0,0,8,6,1.6,'ghost'),box(2.2,1.6,3.6,2.8,1.6)],paths:[[[1.1,5.2],[1.1,.8],[6.9,.8],[6.9,5.2],[2.2,5.2]]],pathOver:1}),
+  };
+
+  const cache={};
+  function fit(sc){
+    sc.paths=sc.paths||[];sc.trees=sc.trees||[];sc.people=sc.people||[];
+    const all=[];sc.ground.forEach(g=>g.p.forEach(p=>all.push([p[0],p[1],0])));sc.objs.forEach(o=>o.faces.forEach(f=>f.p.forEach(p=>all.push(p))));
+    const xs=all.map(p=>p[0]),ys=all.map(p=>p[1]);sc.c=[(Math.min(...xs)+Math.max(...xs))/2,(Math.min(...ys)+Math.max(...ys))/2];
+    let b=[1e9,1e9,-1e9,-1e9];
+    for(let th=-.85;th<=.16;th+=.1){const c=Math.cos(th),s=Math.sin(th);all.forEach(([x,y,z])=>{const a=sc.c[0]+(x-sc.c[0])*c-(y-sc.c[1])*s,bb=sc.c[1]+(x-sc.c[0])*s+(y-sc.c[1])*c;const X=(a-bb)*C30,Y=(a+bb)*.5-z;b=[Math.min(b[0],X),Math.min(b[1],Y),Math.max(b[2],X),Math.max(b[3],Y)];});}
+    sc.k=Math.min((VW-24)/(b[2]-b[0]),(VH-24)/(b[3]-b[1]));sc.ox=VW/2-(b[0]+b[2])/2*sc.k;sc.oy=VH/2-(b[1]+b[3])/2*sc.k;
+    return sc;
+  }
+  const get=key=>cache[key]||(cache[key]=fit(S[key]()));
+  const cl=v=>Math.max(0,Math.min(1,v)),ease=v=>v<.5?2*v*v:1-Math.pow(-2*v+2,2)/2;
+  function shade(nr,kind,roof){
+    const L=Math.hypot(nr[0],nr[1],nr[2])||1,v=cl(.55+.45*((nr[0]*.75-nr[1]*.3)/L)+.35*(nr[2]/L));
+    if(kind==='acc'||roof){const r=Math.round(236+16*v),g2=Math.round(150+60*v),b=Math.round(120+60*v);return `rgb(${Math.min(255,r)},${g2},${b})`;}
+    const c=Math.round(160+85*v);return `rgb(${c},${c},${c-4})`;
+  }
+  function draw(key,t){
+    const ph=t%9;
+    return render(get(key),-.35+.42*Math.sin(t*.55),Math.max(.001,ease(cl(ph/1.3))*(1-ease(cl((ph-8.3)/.7)))),cl((ph-1.4)/.6)*(1-cl((ph-8.1)/.3)),t);
+  }
+  function render(sc,th,g,a2,t){
+    const c=Math.cos(th),s=Math.sin(th),[cx,cy]=sc.c,k=sc.k;
+    const rot=(x,y)=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c];
+    const P=(x,y,z)=>{const [a,b]=rot(x,y);return [sc.ox+(a-b)*C30*k,sc.oy+((a+b)*.5-z)*k];};
+    const D=(x,y,z)=>{const [a,b]=rot(x,y);return a+b+z;};
+    const pts=a=>a.map(p=>r2(p[0])+','+r2(p[1])).join(' ');
+    let out='';
+    sc.ground.forEach(gp=>{out+=`<polygon points="${pts(gp.p.map(q=>P(q[0],q[1],0)))}" fill="${gp.fill}" stroke="${gp.stroke||'none'}" stroke-width="${gp.sw||1}"${gp.dash?` stroke-dasharray="${gp.dash}"`:''}/>`;});
+    const items=[];
+    sc.objs.forEach(o=>{
+      const gz=o.kind==='nb'?1:g,vis=[];
+      o.faces.forEach(f=>{
+        if(f.dec&&a2<=0)return;
+        const nr=[f.n[0]*c-f.n[1]*s,f.n[0]*s+f.n[1]*c,f.n[2]];
+        if(nr[0]+nr[1]+nr[2]<=1e-4)return;
+        const q=f.p.map(p=>[p[0],p[1],p[2]*gz]);
+        vis.push({q,nr,f,dep:q.reduce((m,p)=>m+D(p[0],p[1],p[2]),0)/q.length+(f.dec?.06:0)});
+      });
+      vis.sort((x,y)=>x.dep-y.dep);
+      const svg=vis.map(v=>{const pp=pts(v.q.map(p=>P(...p)));
+        if(v.f.dec)return `<polygon points="${pp}" fill="${WIN}" stroke="${INK}" stroke-width=".6" opacity="${r2(a2)}"/>`;
+        if(o.kind==='nb')return `<polygon points="${pp}" fill="${v.f.n[2]>0?'#F6F6F2':'#E9E9E4'}" stroke="#B5B5AE" stroke-width="1"/>`;
+        if(o.kind==='ghost')return `<polygon points="${pp}" fill="#fff" fill-opacity=".22" stroke="${INK}" stroke-opacity=".55" stroke-width="1.1" stroke-linejoin="round"/>`;
+        const top=v.f.n[2]>0&&!v.f.n[0]&&!v.f.n[1]&&!v.f.roof;
+        return `<polygon points="${pp}" fill="${top?(o.kind==='acc'?TINT:'#fff'):shade(v.nr,o.kind,v.f.roof)}" stroke="${INK}" stroke-width="1.2" stroke-linejoin="round"/>`;}).join('');
+      items.push({d:D(o.cx,o.cy,o.cz||0)+(o.bias||0),s:svg});
+    });
+    sc.trees.forEach(([x,y])=>{const b=P(x,y,0),tp=P(x,y,1.3*g);items.push({d:D(x,y,0)+.3,s:`<line x1="${r2(b[0])}" y1="${r2(b[1])}" x2="${r2(tp[0])}" y2="${r2(tp[1])}" stroke="${INK}" stroke-width="1.4"/><circle cx="${r2(tp[0])}" cy="${r2(tp[1])}" r="${r2(.5*k*g)}" fill="#9CC48A" stroke="${INK}" stroke-width="1"/>`});});
+    sc.people.forEach(([x,y])=>{const b=P(x,y,0),h=1.7*k*.62;items.push({d:D(x,y,0)+.3,s:`<g transform="translate(${r2(b[0])},${r2(b[1])})"><circle cx="0" cy="${r2(-h)}" r="${r2(h*.13)}" fill="${A}"/><line x1="0" y1="${r2(-h*.85)}" x2="0" y2="${r2(-h*.38)}" stroke="${A}" stroke-width="2.2" stroke-linecap="round"/><line x1="0" y1="${r2(-h*.38)}" x2="-3" y2="0" stroke="${A}" stroke-width="1.8" stroke-linecap="round"/><line x1="0" y1="${r2(-h*.38)}" x2="3" y2="0" stroke="${A}" stroke-width="1.8" stroke-linecap="round"/></g>`});});
+    const paths=sc.paths.map(pl=>{const q=pl.map(p=>P(p[0],p[1],.05)),e=q[q.length-1],p2=q[q.length-2],an=Math.atan2(e[1]-p2[1],e[0]-p2[0]);
+      return `<g opacity="${r2(a2)}"><polyline points="${pts(q)}" fill="none" stroke="${A}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="8 6" stroke-dashoffset="${r2(-t*24)}"/><polygon points="${pts([[e[0]+Math.cos(an)*9,e[1]+Math.sin(an)*9],[e[0]+Math.cos(an+2.3)*8,e[1]+Math.sin(an+2.3)*8],[e[0]+Math.cos(an-2.3)*8,e[1]+Math.sin(an-2.3)*8]])}" fill="${A}"/></g>`;}).join('');
+    if(!sc.pathOver)out+=paths;
+    items.sort((x,y)=>x.d-y.d).forEach(i=>out+=i.s);
+    if(sc.pathOver)out+=paths;
+    return out;
+  }
+
+  // iterar: de la caja a la forma consolidada, transformando 4 volúmenes [x,y,z,w,d,h]
+  const IT=[
+    {l:'Forma base',b:[[0,0,0,6,4,2.4],[3,0,0,0,4,0],[0,2,0,0,0,0],[2,1,2.4,0,0,0]]},
+    {l:'Partir',b:[[0,0,0,2.9,4,2.4],[3.1,0,0,2.9,4,2.4],[0,2,0,0,0,0],[2,1,2.4,0,0,0]]},
+    {l:'Empujar',b:[[0,0,0,2.9,4,2.4],[3.1,1.3,0,2.9,4,2.4],[0,2,0,0,0,0],[2,1,2.4,0,0,0]]},
+    {l:'Elevar',b:[[0,0,0,2.9,4,2.4],[3.1,1.3,0,2.9,4,3.6],[0,2,0,0,0,0],[2,1,2.4,0,0,0]]},
+    {l:'Abrir',b:[[0,0,0,2.9,1.6,2.4],[3.1,1.3,0,2.9,4,3.6],[0,2.6,0,2.9,1.4,2.4],[2,1,2.4,0,0,0]]},
+    {l:'Bajar',b:[[0,0,0,2.9,1.6,2.4],[3.1,1.3,0,2.9,4,3.6],[-.5,2.6,0,2.9,1.4,1.2],[2,1,2.4,0,0,0]]},
+    {l:'Sumar',b:[[0,0,0,2.9,1.6,2.4],[3.1,1.3,0,2.9,4,3.6],[-.5,2.6,0,2.9,1.4,1.2],[.3,0,2.4,2.2,1.6,1]]},
+    {l:'Ajustar',b:[[0,0,0,2.9,1.8,2.4],[3.1,.8,0,2.6,4.6,3.2],[-.4,2.8,0,3.1,1.5,1.2],[.2,.1,2.4,2.4,1.6,1.1]]},
+    {l:'Consolidar',b:[[0,0,0,2.9,1.8,2.4],[3.1,.8,0,2.6,4.6,3.2],[-.4,2.8,0,3.1,1.5,1.2],[.2,.1,2.4,2.4,1.6,1.1]],fin:1},
+  ];
+  const ITF=fit({ground:BASE(-1.5,-1,9,7.6),objs:IT.flatMap(s=>s.b.filter(b=>b[5]>0).map(b=>box(b[0],b[1],b[3],b[4],b[5],'m',b[2])))});
+  const STEP=2.1,MORPH=1.1;
+  function iter(t){
+    const n=IT.length,tot=n*STEP+2.4,ph=t%tot,i=Math.min(n-1,Math.floor(ph/STEP)),j=Math.max(0,i-1);
+    const u=i===0?1:ease(cl((ph-i*STEP)/MORPH)),fin=IT[i].fin;
+    const bx=IT[i].b.map((b,q)=>b.map((v,m)=>IT[j].b[q][m]+(v-IT[j].b[q][m])*u));
+    const objs=bx.filter(b=>b[5]>.04&&b[3]>.04&&b[4]>.04).map(b=>{const o=box(b[0],b[1],b[3],b[4],b[5],fin?'acc':'m',b[2]);return o;});
+    const sc=Object.assign({},ITF,{objs,paths:[],trees:fin?[[1.4,2.2]]:[],people:[]});
+    return {svg:render(sc,-.4+.3*Math.sin(t*.45),1,1,t),i,label:IT[i].l,fin:!!fin};
+  }
+  return {draw,iter,steps:IT.map(s=>s.l),has:k=>!!S[k]};
+})();
+
+
+// ---------- pasos de la casa ----------
+const STEPS=[
+  {d:'Todo empieza en el lote: sus linderos, los vecinos, la calle y el sol. Antes de la casa, entiende dónde está.',st:{lot:1,neigh:1}},
+  {d:'Aparecen las masas. Aquí la casa es solo volumen: una pieza, varias piezas o módulos que se repiten.',st:{mass:1}},
+  {d:'Miramos la huella en planta. ¿Ángulos rectos, giros oblicuos o curvas?',st:{foot:1,ghost:.6}},
+  {d:'La casa remata contra el cielo. La cubierta cambia la silueta y la altura de los espacios.',st:{foot:0,ghost:0,roof:1}},
+  {d:'El vacío también se diseña: patios y jardines que dan luz, aire y vida a la casa.',st:{patio:1}},
+  {d:'Se abren los muros. Los vanos definen la relación entre lleno y vacío, interior y exterior.',st:{win:1}},
+  {d:'Entramos. El recorrido conecta los espacios y define cómo se vive la casa. De aquí pasas a plantas y detalle.',st:{ghost:.65,path:1}},
+];
+const BASE={lot:0,neigh:0,mass:0,foot:0,roof:0,patio:0,win:0,ghost:0,path:0};
+const TG=[];{let acc=Object.assign({},BASE);STEPS.forEach(s=>{acc=Object.assign({},acc,s.st);TG.push(acc);});}
+const FULL={lot:1,neigh:0,mass:1,foot:0,roof:1,patio:1,win:1,ghost:0,path:0};
+
+// ---------- diapositivas ----------
+const stepSvg1=()=>G(6,4,ICONS.aislada())+arrow(100,26,112,26,{stroke:G3,sw:1,head:4})+G(110,4,ICONS.agrupada())+txt(50,70,'afuera',{size:11,anchor:'middle',fill:G3,italic:true})+txt(154,70,'adentro',{size:11,anchor:'middle',fill:A,italic:true});
+const stepSvg2=()=>[0,1,2].map(i=>G(4+i*66,8,rect(0,0,58,44,{fill:i===1?TINT:'#fff',stroke:i===1?A:INK,sw:1.4,rx:6})+`<g transform="translate(5,8) scale(.55)">${ICONS[['plana','inclinada','ondulada'][i]]()}</g>`+rect(44,4,10,10,{fill:i===1?A:'#fff',stroke:i===1?A:INK,rx:2})+(i===1?pathd('M46,9 L48.5,11.5 L52.5,6.5',{stroke:'#fff',sw:1.6}):''))).join('')+txt(100,76,'una por nivel · u OTRO',{size:11,anchor:'middle',fill:G3,italic:true});
+const stepSvg3=()=>rect(20,4,100,70,{stroke:G3,sw:1,dash:'4 3'})+pathd('M36,58 L36,30 L66,18 L96,30 L96,58 Z',{sw:1.6})+pathd('M50,58 V42 H62 V58',{sw:1.2})+line(28,58,110,58,{sw:1.4})+[0,1,2,3].map(i=>line(132,14+i*14,188,14+i*14,{stroke:G2,sw:1.2})).join('')+txt(160,10,'porque…',{size:11,anchor:'middle',fill:A,italic:true});
+
+const SL=[];
+SL.push({t:'Portada',dur:10,h:`<div class="in hero"><div class="stag">
+  <div class="stickers"><span class="sticker hot">Diseño de vivienda</span><span class="sticker">Ficha de composición</span><span class="sticker">7 decisiones · 12 principios</span></div>
+  <h1>Diseña tu casa <em>de afuera</em> <span class="o">hacia</span> adentro</h1>
+  <p class="lead">Antes de dibujar plantas, decide la estrategia: cómo se implanta tu casa, sus masas, su cubierta, sus vacíos, su fachada y su recorrido. Luego ordénala con principios de composición.</p>
+  <div class="btns"><button class="btn pri" data-go="1">Empezar →</button><button class="btn" data-autoplay>▶ Reproducir en loop</button></div>
+  </div><div class="hero-vis"><svg id="heroSvg" viewBox="0 0 600 480" aria-label="Casa en isometría girando"></svg><div class="badge">De lo general<b>al detalle</b></div></div></div>`});
+SL.push({t:'La actividad',dur:14,h:`<div class="in"><div class="head stag"><span class="kicker">La actividad</span><h2>Una ficha, <em>muchas</em> decisiones</h2></div>
+  <div class="nums stag"><div><b>7</b><span>decisiones formales</span></div><div><b>1</b><span>boceto de síntesis</span></div><div><b>1</b><span>porqué bien escrito</span></div></div>
+  <div class="steps stag">
+   <article class="step"><div class="n">1</div><h3>Observa</h3><p>Recorre los niveles del lote (afuera) a la circulación (adentro). Cada nivel suma detalle.</p><svg viewBox="0 0 200 90" data-draw>${stepSvg1()}</svg></article>
+   <article class="step"><div class="n">2</div><h3>Elige</h3><p>Una estrategia por nivel en la ficha impresa. ¿Ninguna te convence? Usa <b>OTRO</b> y propón la tuya.</p><svg viewBox="0 0 200 90" data-draw>${stepSvg2()}</svg></article>
+   <article class="step"><div class="n">3</div><h3>Sintetiza</h3><p>Dibuja el boceto y justifica tus elecciones con 2 o 3 principios.</p><svg viewBox="0 0 200 90" data-draw>${stepSvg3()}</svg></article>
+  </div>
+  <div class="deliver"><b>Entregas</b><span>Ficha con 7 decisiones</span><span>Boceto: axonometría, planta o corte</span><span>Principios que aplicas</span><span>Justificación escrita</span></div></div>`});
+SL.push({t:'Las 7 decisiones',cls:'dark',dur:22,ruta:1,h:`<div class="in"><div class="head stag"><span class="kicker">La ruta del ejercicio</span><h2>7 decisiones, de <em>afuera</em> hacia adentro</h2></div>
+  <div class="rutag"><svg id="rutaSvg" viewBox="0 0 600 480" aria-label="La casa se arma en 7 pasos"></svg>
+  <div class="rlist">${LEVELS.map((L,i)=>`<button class="rl" data-go="${3+i}" data-rl="${i}"><b>${pad(i+1)}</b><span>${L.n}</span><i>${L.opts.map(o=>o.l).join(' · ')}</i></button>`).join('')}</div></div></div>`});
+LEVELS.forEach((L,li)=>SL.push({t:pad(li+1)+' · '+L.n,dur:14,lv:li,h:`<div class="in lv">
+  <div class="stage"><div class="dots">${LEVELS.map((_,j)=>`<i class="${j<=li?'on':''}"></i>`).join('')}</div><div class="bn"><b>${pad(li+1)}</b><span>de 07 · ${li===0?'afuera':li===6?'adentro':'nivel'}</span></div><svg class="house" viewBox="0 0 600 480" aria-label="La casa en el nivel ${L.n}"></svg><p>${STEPS[li].d}</p></div>
+  <div class="lvr stag"><span class="kicker">Decisión ${pad(li+1)} de 07</span><h2>${L.n}<small>${L.sub} · ${L.intro}</small></h2>
+   <div class="opts3">${L.opts.map((o,oi)=>`<button class="opt" data-l="${li}" data-o="${oi}"><div class="vol"><svg viewBox="0 0 400 300" class="v3" data-sc="${o.k}" data-off="${oi*.35}" aria-label="Volumetría ${o.l}"></svg></div><div class="ico2" data-draw>${icon(o.k)}</div><div class="lbl">${o.l}</div><div class="ver">Toca para ver más</div></button>`).join('')}</div>
+   <div class="otro-c"><b>+</b><span>OTRO: si ninguna te convence, propón tu propia estrategia de ${L.n.toLowerCase()} en la ficha.</span></div></div></div>`}));
+SL.push({t:'Resumen · 7 decisiones',cls:'soft',dur:24,h:`<div class="in"><div class="head stag"><span class="kicker">Resumen para dejar en pantalla</span><h2>Las <em>21</em> estrategias en volumen</h2></div>
+  <div class="sum">${LEVELS.map((L,li)=>`<div class="scol"><h3><b>${pad(li+1)}</b>${L.n}</h3>${L.opts.map((o,oi)=>`<button class="scell opt" data-l="${li}" data-o="${oi}"><svg viewBox="0 0 400 300" class="v3" data-sc="${o.k}" data-off="${-li*.3}"></svg><span>${o.l}</span></button>`).join('')}</div>`).join('')}</div></div>`});
+SL.push({t:'12 principios',cls:'soft',dur:18,h:`<div class="in"><div class="head stag"><span class="kicker">Caja de herramientas · vivienda urbana</span><h2>12 principios para <em>componer</em></h2><p class="lead">Las estrategias dicen <b>qué forma</b> tiene tu casa; los principios dicen <b>cómo se ordena</b>. Elige 2 o 3 y aplícalos con intención.</p></div>
+  <div class="oall">${PR.map((p,i)=>`<button class="oc" data-go="${SL.length+1+i}">${uani(i)}<div class="t"><b>${pad(i+1)}</b><span>${p.full||p.n}</span></div></button>`).join('')}</div></div>`});
+PR.forEach((p,i)=>SL.push({t:'Principio '+pad(i+1)+' · '+(p.full||p.n),dur:11,h:`<div class="in pr"><div class="big">${uani(i)}</div>
+  <div class="stag"><div class="num">${pad(i+1)}</div><h2>${p.full||p.n}</h2><p class="lead">${p.d}</p>
+  <div class="box u"><b>En una vivienda urbana</b>${URB[i]}</div>
+  <div class="box q"><b>Pregúntate</b><span>${p.q}</span></div>${p.ref?`<div class="ref">Referente: ${p.ref}</div>`:''}</div></div>`}));
+SL.push({t:'Ejemplo de lectura',dur:12,h:`<div class="in ex"><div class="stag"><span class="kicker">Ejemplo de lectura</span><h2>Tres decisiones <em>bastan</em></h2>
+  <div class="formula"><span>Volumetría fragmentada</span><i>+</i><span>Vacío central</span><i>+</i><span>Ritmo en fachada</span><i>=</i><b>Casa patio</b></div>
+  <p class="lead">Volúmenes sueltos que se reúnen alrededor de un patio, con una fachada ordenada por la repetición de sus vanos. Si puedes explicarlo en una frase, tienes un proyecto.</p></div>
+  <svg id="exSvg" viewBox="0 0 600 480" aria-label="Casa patio de ejemplo"></svg></div>`});
+SL.push({t:'Itera hasta consolidar',dur:22,iter:1,h:`<div class="in it"><div class="stag"><span class="kicker">Proceso</span><h2>Más variaciones, <em>más rápido</em> llegas</h2><p class="lead">Partir, empujar, elevar, abrir, sumar, ajustar… Cada prueba es una decisión. Entre más versiones dibujes y modeles, antes aparece la forma que se consolida.</p><div class="itsteps" id="itSteps">${V3.steps.map(l=>`<span>${l}</span>`).join('')}</div><div class="itcount"><small>Iteración</small><span id="itN">01</span></div></div><svg id="itSvg" viewBox="0 0 400 300" aria-label="Una caja que se transforma hasta consolidar una forma"></svg></div>`});
+SL.push({t:'Cierre',cls:'acc',dur:10,h:`<div class="in end stag"><span class="kicker" style="color:#fff">Recuerda</span><h2>No hay respuestas correctas;<br>hay decisiones coherentes</h2><p class="lead" style="color:#fff">Una buena casa se explica en pocas estrategias bien elegidas.</p>
+  <div class="btns" style="justify-content:center"><a class="btn dk" href="Ficha_Composicion_Vivienda.pdf" download>Fichas PDF para imprimir</a><button class="btn" data-go="0">Volver al inicio</button></div></div>`});
+
+const deck=$('#deck');
+deck.innerHTML=SL.map((s,i)=>`<section class="slide ${s.cls||''}" data-i="${i}" aria-label="${esc(s.t)}">${s.h}</section>`).join('');
+const slides=$$('.slide');
+const IDX={ruta:SL.findIndex(s=>s.ruta),ej:SL.findIndex(s=>s.t==='Ejemplo de lectura')};
+$('#prog').innerHTML=SL.map((s,i)=>`<button data-go="${i}" aria-label="${esc(s.t)}"><i></i></button>`).join('');
+$('#ovGrid').innerHTML=SL.map((s,i)=>`<button data-go="${i}"><b>${pad(i+1)}</b><span>${esc(s.t.replace(/^\d\d · /,''))}</span></button>`).join('');
+
+// ---------- navegación ----------
+let cur=-1,enteredAt=0;
+function go(n){
+  n=((n|0)%SL.length+SL.length)%SL.length;
+  if(n===cur)return;
+  cur=n;enteredAt=performance.now();
+  slides.forEach((s,i)=>{s.classList.toggle('active',i===n);s.classList.toggle('past',i<n);s.classList.toggle('play',i===n);});
+  const s=slides[n];s.scrollTop=0;
+  document.body.classList.toggle('dk',s.classList.contains('dark'));
+  $('#stitle').textContent=SL[n].t;
+  $('#count').textContent=`${pad(n+1)} / ${pad(SL.length)}`;
+  $$('#prog button').forEach((b,i)=>{b.classList.toggle('on',i===n);b.classList.toggle('done',i<n);});
+  $$('#ovGrid button').forEach((b,i)=>b.classList.toggle('on',i===n));
+  try{history.replaceState(null,'','#'+(n+1)+(auto?'-auto':''));}catch(e){}
+  redraw();
+  if(n>0)hideHint();
+  arm();
+}
+function redraw(){const s=slides[cur];if(s)$$('[data-draw]',s).forEach((el,i)=>drawIn(el.tagName==='svg'?el:el.querySelector('svg'),150+i*70));}
+setInterval(()=>{if(!modal.classList.contains('open'))redraw();},7000);
+const next=()=>go(cur+1),prev=()=>go(cur-1);
+$('#next').onclick=next;$('#prev').onclick=prev;
+document.addEventListener('click',e=>{const g=e.target.closest('[data-go]');if(g){closeOv();closeModal();go(+g.dataset.go);}});
+document.addEventListener('keydown',e=>{
+  if(modal.classList.contains('open')||ov.classList.contains('open')){if(e.key==='Escape'){closeModal();closeOv();}return;}
+  if(['ArrowRight','PageDown'].includes(e.key)||(e.key===' '&&!e.target.closest('button'))){e.preventDefault();next();}
+  else if(['ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();prev();}
+  else if(e.key==='Home')go(0);else if(e.key==='End')go(SL.length-1);
+  else if(e.key==='f'||e.key==='F')toggleFs();
+  else if(e.key==='p'||e.key==='P')setAuto(!auto);
+});
+let sw=null,swiped=0;
+deck.addEventListener('pointerdown',e=>{sw={x:e.clientX,y:e.clientY,t:Date.now(),type:e.pointerType};});
+deck.addEventListener('pointerup',e=>{
+  if(!sw)return;const dx=e.clientX-sw.x,dy=e.clientY-sw.y,dt=Date.now()-sw.t,min=sw.type==='mouse'?140:55;sw=null;
+  if(Math.abs(dx)>min&&Math.abs(dx)>Math.abs(dy)*1.4&&dt<900){swiped=Date.now();dx<0?next():prev();}
+});
+deck.addEventListener('pointercancel',()=>{sw=null;});
+deck.addEventListener('click',e=>{if(Date.now()-swiped<350){e.preventDefault();e.stopPropagation();}},true);
+const ov=$('#ov');function closeOv(){ov.classList.remove('open');}
+$('#bIdx').onclick=()=>ov.classList.add('open');
+ov.addEventListener('click',e=>{if(e.target.closest('[data-ovclose]'))closeOv();});
+const fsOK=!!(document.documentElement.requestFullscreen||document.documentElement.webkitRequestFullscreen);
+function toggleFs(){if(!fsOK)return;const d=document;if(d.fullscreenElement||d.webkitFullscreenElement){(d.exitFullscreen||d.webkitExitFullscreen).call(d);}else{const el=d.documentElement;(el.requestFullscreen||el.webkitRequestFullscreen).call(el);}}
+if(!fsOK)$('#bFs').style.display='none';
+$('#bFs').onclick=toggleFs;
+let hintOff=false;function hideHint(){if(!hintOff){hintOff=true;$('#hint').classList.add('off');}}
+setTimeout(hideHint,7000);
+
+// ---------- reproducción automática en loop ----------
+let auto=/auto/.test(location.hash+location.search),tmr=null;
+function nextAuto(){let n=cur;do{n=(n+1)%SL.length;}while(SL[n].skip);go(n);}
+function arm(){
+  clearTimeout(tmr);const bar=$('#timer');bar.classList.remove('run');bar.style.width='0';
+  if(!auto||modal.classList.contains('open'))return;
+  const ms=(SL[cur].dur||10)*1000;
+  void bar.offsetWidth;bar.style.animationDuration=ms+'ms';bar.classList.add('run');
+  tmr=setTimeout(nextAuto,ms);
+}
+function setAuto(on){auto=on;$('#bPlay').textContent=on?'❚❚':'▶';$('#bPlay').classList.toggle('play-on',on);try{history.replaceState(null,'','#'+(cur+1)+(on?'-auto':''));}catch(e){}if(on&&SL[cur].skip)nextAuto();else arm();toast(on?'Reproducción automática activada':'Reproducción en pausa');}
+$('#bPlay').onclick=()=>setAuto(!auto);
+document.addEventListener('click',e=>{if(e.target.closest('[data-autoplay]'))setAuto(true);});
+
+// ---------- casa animada ----------
+let hs=Object.assign({},BASE),march=0,last=0,rutaStep=-1,itStep=-1,v3f=0,modalAt=0;
+function tween(tg,dt,sp){for(const k in hs){const d=tg[k]-hs[k];hs[k]=Math.abs(d)<.001?tg[k]:hs[k]+d*(reduce?1:Math.min(1,dt*sp));}}
+function loop(ts){
+  const dt=Math.min(.05,(ts-last)/1000||0);last=ts;const t=ts/1000;
+  const sd=SL[cur];march+=dt*24;
+  if(cur===0)$('#heroSvg').innerHTML=renderHouse(Object.assign({th:reduce?-.4:-.5+Math.sin(t*.35)*.55,k:28,cx:300,cy:262},FULL));
+  else if(sd&&sd.ruta){
+    const st=Math.min(6,Math.floor((ts-enteredAt)/2600)%9);
+    if(st!==rutaStep){rutaStep=st;$$('.rl').forEach((el,i)=>{el.classList.toggle('on',i===st);el.classList.toggle('done',i<st);});}
+    const resetting=Math.floor((ts-enteredAt)/2600)%9===0&&rutaStep===0;
+    tween(resetting?TG[0]:TG[st],dt,3);
+    $('#rutaSvg').innerHTML=renderHouse(Object.assign({th:reduce?-.35:-.35+Math.sin(t*.3)*.25,k:23,cx:300,cy:240,dark:true,march},hs));
+  }
+  else if(sd&&sd.lv!==undefined){
+    tween(TG[sd.lv],dt,3.2);
+    slides[cur].querySelector('.house').innerHTML=renderHouse(Object.assign({th:reduce?-.35:-.35+Math.sin(t*.3)*.25,k:23,cx:300,cy:240,dark:true,march},hs));
+  }
+  else if(sd&&sd.iter){const r=V3.iter((ts-enteredAt)/1000);$('#itSvg').innerHTML=r.svg;if(r.i!==itStep){itStep=r.i;$$('#itSteps span').forEach((el,i)=>{el.classList.toggle('on',i===r.i);el.classList.toggle('done',i<r.i);});$('#itN').textContent=pad(r.i+1);}}
+  else if(cur===IDX.ej)$('#exSvg').innerHTML=renderHouse(Object.assign({th:reduce?-.4:-.4+Math.sin(t*.35)*.5,k:28,cx:300,cy:255},FULL));
+  if((v3f=(v3f+1)%2)===0){
+    const tt=(ts-enteredAt)/1000;
+    $$('svg.v3',slides[cur]).forEach(el=>{el.innerHTML=V3.draw(el.dataset.sc,tt+(+el.dataset.off||0));});
+    if(modal.classList.contains('open'))$$('svg.v3',mBody).forEach(el=>{el.innerHTML=V3.draw(el.dataset.sc,(ts-modalAt)/1000);});
+  }
+  requestAnimationFrame(loop);
+}
+requestAnimationFrame(loop);
+
+// ---------- tarjetas ampliadas ----------
+const modal=$('#modal'),mBody=$('#mBody');let lastFocus=null;
+function toast(m){let t=$('#toast');if(!t){t=document.createElement('div');t.id='toast';t.className='toast';document.body.appendChild(t);}t.textContent=m;t.classList.add('show');clearTimeout(t._h);t._h=setTimeout(()=>t.classList.remove('show'),1800);}
+function openModal(html){modalAt=performance.now();lastFocus=document.activeElement;mBody.innerHTML=html;modal.classList.add('open');clearTimeout(tmr);$('#timer').classList.remove('run');$('#sheet').scrollTop=0;const v=mBody.querySelector('.m-vis');if(v){v.classList.add('play');drawIn(v.querySelector('svg'),120);}setTimeout(()=>{const x=modal.querySelector('.x');x&&x.focus();},50);}
+function closeModal(){if(!modal.classList.contains('open'))return;modal.classList.remove('open');lastFocus&&lastFocus.focus&&lastFocus.focus();arm();}
+modal.addEventListener('click',e=>{if(e.target.closest('[data-close]'))closeModal();});
+(function(){let y0=null;const sh=$('#sheet');sh.addEventListener('touchstart',e=>{if(sh.scrollTop<=0)y0=e.touches[0].clientY;},{passive:true});sh.addEventListener('touchend',e=>{if(y0!==null&&e.changedTouches[0].clientY-y0>110)closeModal();y0=null;},{passive:true});})();
+function openOpt(li,oi){
+  const L=LEVELS[li],o=L.opts[oi];
+  openModal(`<div class="m-grid"><div class="m-vis three"><div class="mv3"><svg viewBox="0 0 400 300" class="v3" data-sc="${o.k}" aria-label="Volumetría ${o.l}"></svg><div class="mv2">${icon(o.k)}<span>Esquema en planta / fachada</span></div></div></div><div class="m-txt"><span class="kicker">Nivel ${pad(li+1)} · ${L.n}</span><h3>${o.l}</h3><p>${o.d}</p>
+    <div class="m-box"><b>Funciona bien en</b>${o.i}</div><div class="m-box q"><b>Pregúntate</b><span>${o.q}</span></div>
+    <div class="m-nav">${L.opts.map((x,j)=>j===oi?'':`<button class="btn" data-goto="${li},${j}">${x.l}</button>`).join('')}<button class="btn pri" data-close>Cerrar</button></div></div></div>`);
+}
+deck.addEventListener('click',e=>{const c=e.target.closest('.opt');if(c)openOpt(+c.dataset.l,+c.dataset.o);});
+mBody.addEventListener('click',e=>{const b=e.target.closest('[data-goto]');if(b){const [li,oi]=b.dataset.goto.split(',').map(Number);openOpt(li,oi);}});
+
+
+const h=parseInt((location.hash||'').replace('#',''),10);
+if(auto){$('#bPlay').textContent='❚❚';$('#bPlay').classList.add('play-on');}
+go(h>0?h-1:0);
+})();
+</script>
+</body>
+</html>
